@@ -1,0 +1,33 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+# Setup
+title:               Smooth Voxel Modeling
+tagline:             blahblah
+url:                 http://getpoole.com
+paginate:            1
+baseurl:             ""
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# About/contact
+author:
+  name:              I-Chao Shen
+  url:               https://twitter.com/mdo
+  email:             jdilyshen@gmail.com
+
+# Custom vars
+version:             2.0.0
+github:
+  repo:              https://github.com/jdily/jdily.github.io/
+
+# Page navi
+pages_list:       {'Problem':'/problem','Progress':'/progress','Meeting Note':'/meeting'}

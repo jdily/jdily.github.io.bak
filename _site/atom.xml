@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Smooth Voxel Modeling</title>
+ <link href="http://getpoole.com/atom.xml" rel="self"/>
+ <link href="http://getpoole.com/"/>
+ <updated>2015-09-27T12:05:28-07:00</updated>
+ <id>http://getpoole.com</id>
+ <author>
+   <name>I-Chao Shen</name>
+   <email>jdilyshen@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Meeting category</title>
+   <link href="http://getpoole.com/meeting/2015/09/27/test-meeting/"/>
+   <updated>2015-09-27T00:00:00-07:00</updated>
+   <id>http://getpoole.com/meeting/2015/09/27/test-meeting</id>
+   <content type="html">&lt;p&gt;meeting &lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Test category</title>
+   <link href="http://getpoole.com/progress/2015/09/27/test-category/"/>
+   <updated>2015-09-27T00:00:00-07:00</updated>
+   <id>http://getpoole.com/progress/2015/09/27/test-category</id>
+   <content type="html">&lt;p&gt;adasda&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
