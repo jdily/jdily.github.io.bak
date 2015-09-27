@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-09-27T16:22:22-07:00</updated>
+ <updated>2015-09-27T16:45:54-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -13,20 +13,105 @@
 
  
  <entry>
-   <title>Meeting category</title>
-   <link href="http://jdily.github.io/meeting/2015/09/27/test-meeting/"/>
-   <updated>2015-09-27T00:00:00-07:00</updated>
-   <id>http://jdily.github.io/meeting/2015/09/27/test-meeting</id>
-   <content type="html">&lt;p&gt;meeting &lt;/p&gt;
+   <title>Sep 23, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/09/23/meeting/"/>
+   <updated>2015-09-23T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/meeting/2015/09/23/meeting</id>
+   <content type="html">&lt;h2 id=&quot;importants&quot;&gt;Importants&lt;/h2&gt;
+&lt;p&gt;Next meeting : Sep 29 (Tue), 1:00 pm  &lt;/p&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Visualization should be changed so that we can see the line clearer.&lt;/li&gt;
+  &lt;li&gt;Smoothness issue
+    &lt;ul&gt;
+      &lt;li&gt;leverage local laplacian, i.e. describe a pixel crossing with two neighbors.&lt;/li&gt;
+      &lt;li&gt;find out what we want, i.e. the optimization function.&lt;/li&gt;
+      &lt;li&gt;We can 
+        &lt;ul&gt;
+          &lt;li&gt;use network results as initial value (i.e. using network to do the feature pattern-&amp;gt;crossing value mapping, because it’s hard to formulate as a numerical optimization.)&lt;/li&gt;
+          &lt;li&gt;and do a post-optimization for smoothness (this one is easier to do optimization.)  &lt;/li&gt;
+          &lt;li&gt;Also, we can try to incorporate this process into the network, as a new layer.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;The current result can be consider as first-order prediction, we can try to make the loss (objective) function complicated and try to predict some other things.&lt;/li&gt;
+      &lt;li&gt;For interactive usage, if post-optimization (globally) is needed, we can only do it once a while, but not after every update.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;action-items&quot;&gt;Action Items&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;generate double feature set -&amp;gt; for reflective symmetries&lt;/li&gt;
+  &lt;li&gt;Run experiment -&amp;gt; use triangle and rect to reconstruct arrow.&lt;/li&gt;
+  &lt;li&gt;drafting the introduction, including notation and target optimization function.&lt;/li&gt;
+  &lt;li&gt;experiment with the two step optimization including laplacian&lt;/li&gt;
+  &lt;li&gt;integrate caffe model into c++&lt;/li&gt;
+  &lt;li&gt;Implement the new representation and compare..&lt;/li&gt;
+&lt;/ol&gt;
+
 </content>
  </entry>
  
  <entry>
-   <title>Test category</title>
-   <link href="http://jdily.github.io/progress/2015/09/27/test-category/"/>
-   <updated>2015-09-27T00:00:00-07:00</updated>
-   <id>http://jdily.github.io/progress/2015/09/27/test-category</id>
-   <content type="html">&lt;p&gt;adasda&lt;/p&gt;
+   <title>Arrow result</title>
+   <link href="http://jdily.github.io/progress/2015/09/22/arrow-result/"/>
+   <updated>2015-09-22T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/09/22/arrow-result</id>
+   <content type="html">&lt;p&gt;Hi guys, I put a new result here 
+Please see 
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/arrow-up.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/arrow-up.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now I am training on a bigger dataset.&lt;/p&gt;
+
+&lt;p&gt;ichao&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learning rate tuning</title>
+   <link href="http://jdily.github.io/progress/2015/09/17/learning-rate-tuning/"/>
+   <updated>2015-09-17T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/09/17/learning-rate-tuning</id>
+   <content type="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;learning rate&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;loss&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;loss&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;loss&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0086047&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0098077&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0096455 &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0061281 &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0057908&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0065994&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; 0.0084242&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0083152&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0074397&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0423556 &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0422975&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;font color=&quot;red&quot;&gt;0.0124222 &lt;/font&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;There is one strange loss for lr=0.5.. I ran it several times, and sometimes there is one smaller value… &lt;/p&gt;
+
 </content>
  </entry>
  
