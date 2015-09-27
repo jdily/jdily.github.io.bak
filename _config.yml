@@ -7,9 +7,9 @@ relative_permalinks: true
 # Setup
 title:               Smooth Voxel Modeling
 tagline:             blahblah
-url:                 http://getpoole.com
+url:                 http://jdily.github.io
 paginate:            1
-baseurl:             ""
+baseurl:             "http://jdily.github.io/problem"
 
 # Assets
 #
@@ -21,7 +21,7 @@ sass:
 # About/contact
 author:
   name:              I-Chao Shen
-  url:               https://twitter.com/mdo
+  url:               
   email:             jdilyshen@gmail.com
 
 # Custom vars
