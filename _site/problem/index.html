@@ -34,7 +34,7 @@
       }
     },
     tex2jax: {
-      inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      inlineMath: [ ['$','$']],
       displayMath: [ ['$$','$$'] ],
       processEscapes: true,
     }
@@ -67,12 +67,75 @@
   <h2 id="overview">Overview</h2>
 <hr />
 <p>(We first discuss <strong>2D</strong> case only. )
-Consider a $ w\times h$  binary image $I$ contains a single shape, and it’s polygon representation  $S$.
-Pixels in $I$ can be classified into shape pixels $P_s$ (white) and background pixels $P_b$ (black).</p>
+Consider a $w\times h$ binary image $I$ contains a single shape, and it’s polygon representation  $S$.
+Pixels in $I$ can be classified into shape pixels $P_s$ (white) and background pixels $P_b$ (black).
+&gt; Our goal is given the shape pixels $P_s$, we want to recover it’s shape polygon $S$.</p>
+
+<p>Our problem consists of two stages: <strong>training</strong> and <strong>prediction</strong>. 
+Now we first discuss a simple setting, say we only have one training shape (star) and one testing shape (triangle).
+We will extract features from both shapes. </p>
+
+<h2 id="training">Training</h2>
+<hr />
+<blockquote>
+  <p><strong>TODO</strong>:<br />
+1. describe the generation of training data (both feature and crossing value).</p>
+</blockquote>
+
+<h2 id="prediction">Prediction</h2>
+<hr />
+<p>We separate prediction part into two steps:   </p>
+
+<ol>
+  <li><strong>Pattern Matching</strong>: using network to do the feature pattern-&gt;crossing value mapping, because it’s hard to formulate as a numerical optimization.</li>
+  <li><strong>Post-optimization (smoothing)</strong> : this one is easier to do optimization.</li>
+</ol>
+
+<h4 id="variables">variables</h4>
+<p>Currently we have each $e_i$ as <strong>mid-edge</strong> point.  (we can also switch according to Alla’s suggestion.)</p>
+
+<script type="math/tex; mode=display">e_i = p_{i1}*(1-t) + p_{i2}*t</script>
+
+<h3 id="pattern-matching">Pattern Matching</h3>
+<p>After training, we will get  a regression function $\Phi$ (a trained model).
+For each boundary pixel, we extract it’s feature $f_i$, and predict the crossing value ($e_i$) using:</p>
+
+<script type="math/tex; mode=display">\Phi(f_i) = e_i</script>
+
+<h3 id="post-optimization">Post-optimization</h3>
+
+<h4 id="objective-function">objective function</h4>
+<p>Here we try to leverage local laplacian, i.e. describe a pixel crossing with two neighbors’ crossings.</p>
+
+<p><strong>Laplacian</strong> : local coordinate <script type="math/tex"> \delta_i = e_i - \frac{1}{2}(e_{i-1}+e_{i+1})</script></p>
+
+<p><strong>Energy</strong> (similar to <sup id="fnref:Sorkine2004"><a href="#fn:Sorkine2004" class="footnote">1</a></sup>): </p>
+
+<script type="math/tex; mode=display">E({e}') = w_r\sum_n \|\delta_i - L({e_i}')\|^2 + w_d\sum_n \| {e_i}'-e_i\|^2</script>
+
+<p>${e}’$ is the optimized point position, $L$ is the laplacian operator. 
+By minimizing this energy, we hope the optimized position ${e_i}’$ can be as close to the predicted value $e_i$.
+Meanwhile, we also want to maintain the local coordinate, i.e. $\delta_i$.</p>
 
 <blockquote>
-  <p>Our goal is given the shape pixels $P_s$, we want to recover it’s shape polygon $S$.</p>
+  <p><strong>Problem</strong><br />
+- After getting the output from network (pattern matching step), i.e. bunch of initial $e_i$, we don’t have the local coordinate of the testing shape (in this case, the <strong>triangle</strong>).  </p>
 </blockquote>
+
+<h2 id="feature">Feature</h2>
+<blockquote>
+  <p><strong>TODO</strong>:<br />
+1. describe the properties of the features, context or context-free..</p>
+</blockquote>
+
+<h2 id="reference">Reference</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:Sorkine2004">
+      <p>Olga Sorkine and Daniel Cohen-Or and Yaron Lipman and Marc Alexa and Christian R"{o}ssl and Hans-Peter Seidel, 2004, “<strong>Laplacian Surface Editing</strong>”,   SGP. <a href="#fnref:Sorkine2004" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
 </article>
 
