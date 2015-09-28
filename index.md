@@ -2,8 +2,11 @@
 layout: default
 title: Home
 ---
+{% include about.md %}
+{{ about }}
 
-<div class="posts">
+<!-- <div class="posts">
+  {}
   {% for post in paginator.posts %}
   <article class="post">
     <h1 class="post-title">
@@ -31,3 +34,4 @@ title: Home
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
+ -->

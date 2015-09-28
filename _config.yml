@@ -9,7 +9,7 @@ title:               Smooth Voxel Modeling
 tagline:             blahblah
 url:                 http://jdily.github.io
 paginate:            1
-baseurl:             
+baseurl:             ""
 
 # Assets
 #

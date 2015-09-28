@@ -44,63 +44,27 @@
         </h3>
       </div>
 
-      <div class="posts">
-  
-  <article class="post">
-    <h1 class="post-title">
-      <a href="/meeting/2015/09/23/meeting/">
-        Sep 23, 2015 Meeting note
-      </a>
-    </h1>
+      
+<center><h1> Smooth Voxel Modeling </h1></center>
 
-    <time datetime="2015-09-23T00:00:00-07:00" class="post-date">23 Sep 2015</time>
+<h2 id="abstract">Abstract</h2>
 
-    <h2 id="importants">Importants</h2>
-<p>Next meeting : Sep 29 (Tue), 1:00 pm  </p>
+<h2 id="resources">Resources</h2>
 
-<h2 id="notes">Notes</h2>
-<ul>
-  <li>Visualization should be changed so that we can see the line clearer.</li>
-  <li>Smoothness issue
-    <ul>
-      <li>leverage local laplacian, i.e. describe a pixel crossing with two neighbors.</li>
-      <li>find out what we want, i.e. the optimization function.</li>
-      <li>We can 
-        <ul>
-          <li>use network results as initial value (i.e. using network to do the feature pattern-&gt;crossing value mapping, because it’s hard to formulate as a numerical optimization.)</li>
-          <li>and do a post-optimization for smoothness (this one is easier to do optimization.)  </li>
-          <li>Also, we can try to incorporate this process into the network, as a new layer.</li>
-        </ul>
-      </li>
-      <li>The current result can be consider as first-order prediction, we can try to make the loss (objective) function complicated and try to predict some other things.</li>
-      <li>For interactive usage, if post-optimization (globally) is needed, we can only do it once a while, but not after every update.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="action-items">Action Items</h2>
-<ol>
-  <li>generate double feature set -&gt; for reflective symmetries</li>
-  <li>Run experiment -&gt; use triangle and rect to reconstruct arrow.</li>
-  <li>drafting the introduction, including notation and target optimization function.</li>
-  <li>experiment with the two step optimization including laplacian</li>
-  <li>integrate caffe model into c++</li>
-  <li>Implement the new representation and compare..</li>
-</ol>
-
-
-  </article>
+<!-- <div class="posts">
+  {}
   
 </div>
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page2">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     <span class="pagination-item newer">Newer</span>
   
 </div>
+ -->
 
 
       <div class="footer">
