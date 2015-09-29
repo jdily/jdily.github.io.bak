@@ -26,6 +26,24 @@
 </head>
 
   
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
   <body>
 
     <div class="container content">
@@ -50,11 +68,60 @@
   <h2 id="variables">Variables</h2>
 <blockquote>
   <p><strong>TODO</strong><br />
-Think about the mid-edge and edge-end point (for deal with both corners and sides.)
-## Features##</p>
+Think about the mid-edge and edge-end point (for deal with both corners and sides.)</p>
 </blockquote>
 
+<script type="math/tex; mode=display">% <![CDATA[
+e_i = P_{i1} \times (1-t) + P_{i2}\times t, 0<=t <=1 %]]></script>
+
+<h2 id="features">Features</h2>
+<blockquote>
+  <p><strong>TODO</strong><br />
+write more detail about each feature</p>
+</blockquote>
+
+<h3 id="context-free-feature">Context-free feature</h3>
+<p>Encode neighbourhoods in terms of distance to subsequent left/right corners and the relative orientation of these corners.  </p>
+
+<h3 id="context-feature">Context feature</h3>
+<p>Contain current values of $e_i$ and X ``rings’’ of $e$ values, i.e.  (<script type="math/tex"> ... e_{i-1}, e_i, e_{i+1}, ... </script>)</p>
+
 <h2 id="optimization">Optimization</h2>
+<p><script type="math/tex"> E_{curve} =  W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _0  \\
+     + W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_0</script> </p>
+
+<p>There are linearized terms for </p>
+
+<ul>
+  <li>minimizing curvature</li>
+  <li>keeping curvature constant</li>
+</ul>
+
+<p>$L_0$ aims to indicate that we want to allow some but not many places where this error is high..</p>
+
+<p>The algorithm would be:</p>
+
+<ol>
+  <li>
+    <p>compute context-free weights (generate these using CNN based on training..)  </p>
+  </li>
+  <li>
+    <p>Minimize our quadratic function (with linear inequalities):  </p>
+  </li>
+</ol>
+
+<script type="math/tex; mode=display"> E_{curve2} =  W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _2  \\
+     + W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2 </script>
+
+<ol>
+  <li>
+    <p>Update weights based on both feature vectors and $e_k$ values in an immediate neighborhood (rere rings of end-points) - i.e. compute context
+based weights  (again train the network to give contextual weights)  </p>
+  </li>
+  <li>
+    <p>repeat 2, 3 till weights/values no longer change.</p>
+  </li>
+</ol>
 
 
 </article>

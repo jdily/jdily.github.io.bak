@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-09-27T20:08:39-07:00</updated>
+ <updated>2015-09-29T11:53:49-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -14,17 +14,66 @@
  
  <entry>
    <title>Alla's note.</title>
-   <link href="http://jdily.github.io/note,%20draft/2015/09/27/Alla-note/"/>
+   <link href="http://jdily.github.io/draft/2015/09/27/Alla-note/"/>
    <updated>2015-09-27T00:00:00-07:00</updated>
-   <id>http://jdily.github.io/note,%20draft/2015/09/27/Alla-note</id>
+   <id>http://jdily.github.io/draft/2015/09/27/Alla-note</id>
    <content type="html">&lt;h2 id=&quot;variables&quot;&gt;Variables&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;TODO&lt;/strong&gt;&lt;br /&gt;
-Think about the mid-edge and edge-end point (for deal with both corners and sides.)
-## Features##&lt;/p&gt;
+Think about the mid-edge and edge-end point (for deal with both corners and sides.)&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+e_i = P_{i1} \times (1-t) + P_{i2}\times t, 0&lt;=t &lt;=1 %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;TODO&lt;/strong&gt;&lt;br /&gt;
+write more detail about each feature&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;context-free-feature&quot;&gt;Context-free feature&lt;/h3&gt;
+&lt;p&gt;Encode neighbourhoods in terms of distance to subsequent left/right corners and the relative orientation of these corners.  &lt;/p&gt;
+
+&lt;h3 id=&quot;context-feature&quot;&gt;Context feature&lt;/h3&gt;
+&lt;p&gt;Contain current values of $e_i$ and X ``rings’’ of $e$ values, i.e.  (&lt;script type=&quot;math/tex&quot;&gt; ... e_{i-1}, e_i, e_{i+1}, ... &lt;/script&gt;)&lt;/p&gt;
+
 &lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt; E_{curve} =  W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _0  \\
+     + W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_0&lt;/script&gt; &lt;/p&gt;
+
+&lt;p&gt;There are linearized terms for &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;minimizing curvature&lt;/li&gt;
+  &lt;li&gt;keeping curvature constant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$L_0$ aims to indicate that we want to allow some but not many places where this error is high..&lt;/p&gt;
+
+&lt;p&gt;The algorithm would be:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;compute context-free weights (generate these using CNN based on training..)  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Minimize our quadratic function (with linear inequalities):  &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve2} =  W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _2  \\
+     + W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2 &lt;/script&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Update weights based on both feature vectors and $e_k$ values in an immediate neighborhood (rere rings of end-points) - i.e. compute context
+based weights  (again train the network to give contextual weights)  &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;repeat 2, 3 till weights/values no longer change.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 </content>
  </entry>
