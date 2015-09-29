@@ -30,4 +30,4 @@ github:
   repo:              https://github.com/jdily/jdily.github.io/
 
 # Page navi
-pages_list:       {'Problem':'/problem','Progress':'/progress','Meeting Note':'/meeting'}
+pages_list:       {'Problem':'/problem','Progress':'/progress','Meeting Note':'/meeting', 'Draft':'/draft'}
