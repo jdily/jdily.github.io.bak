@@ -4,13 +4,63 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-09-29T11:54:43-07:00</updated>
+ <updated>2015-10-05T13:40:03-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Optimization draft</title>
+   <link href="http://jdily.github.io/progress/2015/10/02/Optimization-draft/"/>
+   <updated>2015-10-02T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/02/Optimization-draft</id>
+   <content type="html">&lt;h2 id=&quot;optimization-with-anisotropic-weights&quot;&gt;Optimization with anisotropic weights&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
+
+&lt;h3 id=&quot;term1--minimizing-curvature---emin--&quot;&gt;Term1 : minimizing curvature  &lt;script type=&quot;math/tex&quot;&gt; (E_{min})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 &lt;/script&gt;
+
+&lt;h3 id=&quot;term2--keeping-curvature-constant---econst--&quot;&gt;Term2 : keeping curvature constant  &lt;script type=&quot;math/tex&quot;&gt; (E_{const})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 &lt;/script&gt;
+
+&lt;h3 id=&quot;note&quot;&gt;Note&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now I use square distance of 2-norm.&lt;/li&gt;
+  &lt;li&gt;The only constraints I have now for each $e_i$ is $ 0 \leq e_i \leq 1$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;experiment&quot;&gt;Experiment&lt;/h3&gt;
+
+&lt;p&gt;To try out the optimization, I optimize different shapes and different weights combinations.&lt;/p&gt;
+
+&lt;h4 id=&quot;isotropic-weights&quot;&gt;isotropic weights&lt;/h4&gt;
+
+&lt;p&gt;In these examples, I use both weighting as 0.5. Please see the following results:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-rect1.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-rect1.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-heart298.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-heart298.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-triangle36.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-triangle36.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-phone.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-phone.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;anisotropic-weights&quot;&gt;anisotropic weights&lt;/h4&gt;
+
+&lt;p&gt;The thing is that I tried to add anisotropic weights into the optimization, but I didn’t get reasonable results when I manually set the weights.
+Most of the time, the result are just very close to the isotropic weights results.
+So I did a test that randomly generate the weights for every $e_i$, and the results still looks very close, and the optimized energy from the solver are close.&lt;/p&gt;
+
+&lt;p&gt;I am trying to find out what is the problem right now… &lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Alla's note.</title>
