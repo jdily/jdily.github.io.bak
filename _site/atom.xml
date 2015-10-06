@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-06T12:24:45-07:00</updated>
+ <updated>2015-10-06T14:18:02-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -13,11 +13,37 @@
 
  
  <entry>
+   <title>Implementation detail</title>
+   <link href="http://jdily.github.io/progress/2015/10/06/Implementation-detail/"/>
+   <updated>2015-10-06T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/06/Implementation-detail</id>
+   <content type="html">&lt;h2 id=&quot;optimization-with-spatial-varying-weights&quot;&gt;Optimization with spatial-varying weights&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
+
+&lt;h3 id=&quot;term1--minimizing-curvature---emin--&quot;&gt;Term1 : minimizing curvature  &lt;script type=&quot;math/tex&quot;&gt; (E_{min})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 &lt;/script&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+&lt;p&gt;#### variable : &lt;/p&gt;
+
+&lt;h3 id=&quot;term2--keeping-curvature-constant---econst--&quot;&gt;Term2 : keeping curvature constant  &lt;script type=&quot;math/tex&quot;&gt; (E_{const})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 &lt;/script&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>GT energy comparison</title>
    <link href="http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT/"/>
    <updated>2015-10-06T00:00:00-07:00</updated>
    <id>http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT</id>
    <content type="html">&lt;h3 id=&quot;compare-energy-with-ground-truth-l2&quot;&gt;Compare energy with ground truth (L2)&lt;/h3&gt;
+
+&lt;p&gt;I set both weighting 0.5, however, because I think the scale of two terms may not be equal.
+So maybe they are not contributing equally.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -117,6 +143,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;h3 id=&quot;discussion&quot;&gt;Discussion&lt;/h3&gt;
 &lt;p&gt;I think one interesting thing to think about is that, our ground truth, are not necessary be the optimal for this energy, right?
 So for most cases (well, for all of these 6 examples), the optimized energies are lower than the energies from gt.&lt;/p&gt;
 

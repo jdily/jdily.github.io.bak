@@ -6,6 +6,9 @@ use_math: true
 ---
 ### Compare energy with ground truth (L2)
 
+I set both weighting 0.5, however, because I think the scale of two terms may not be equal.
+So maybe they are not contributing equally.
+
 |  data | type  | term1  | term2  | total |
 |:--:|:---:|:---:|:---:|:---:|
 | bubble  | gt | 7.16217|18.774 |25.93617 |
@@ -21,6 +24,7 @@ use_math: true
 |  triangle36| gt |8.25513|21.9114|30.16653 | 
 | | optimized | 2.50129|3.12958|5.63087| 
 
+### Discussion
 I think one interesting thing to think about is that, our ground truth, are not necessary be the optimal for this energy, right?
 So for most cases (well, for all of these 6 examples), the optimized energies are lower than the energies from gt.
 

@@ -10,7 +10,7 @@
 
   <title>
     
-      Term comparison &middot; Smooth Voxel Modeling
+      Implementation detail &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,11 +65,23 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Term comparison</h1>
-  <time datetime="2015-10-05T00:00:00-07:00" class="post-date">05 Oct 2015</time>
-  <p>Put some comparison for both term at </p>
+  <h1 class="post-title">Implementation detail</h1>
+  <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
+  <h2 id="optimization-with-spatial-varying-weights">Optimization with spatial-varying weights</h2>
 
-<p><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html">https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html</a></p>
+<script type="math/tex; mode=display"> E_{curve} = E_{min} + E_{const}</script>
+
+<h3 id="term1--minimizing-curvature---emin--">Term1 : minimizing curvature  <script type="math/tex"> (E_{min})  </script></h3>
+
+<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
+
+<h3 id="implementation">Implementation</h3>
+<p>#### variable : </p>
+
+<h3 id="term2--keeping-curvature-constant---econst--">Term2 : keeping curvature constant  <script type="math/tex"> (E_{const})  </script></h3>
+
+<script type="math/tex; mode=display">  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 </script>
+
 
 </article>
 
@@ -80,8 +92,8 @@
     
       <li>
         <h3>
-          <a href="/progress/2015/10/06/Implementation-detail/">
-            Implementation detail
+          <a href="/progress/2015/10/06/Energy-comparison-with-GT/">
+            GT energy comparison
             <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
           </a>
         </h3>
@@ -89,9 +101,9 @@
     
       <li>
         <h3>
-          <a href="/progress/2015/10/06/Energy-comparison-with-GT/">
-            GT energy comparison
-            <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
+          <a href="/progress/2015/10/05/Term-Comparison/">
+            Term comparison
+            <small><time datetime="2015-10-05T00:00:00-07:00">05 Oct 2015</time></small>
           </a>
         </h3>
       </li>
