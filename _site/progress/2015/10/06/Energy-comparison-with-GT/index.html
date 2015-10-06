@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      GT energy comparison &middot; Smooth Voxel Modeling
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
+</head>
+
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+  <body>
+
+    <div class="container content">
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Smooth Voxel Modeling</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/problem">Problem</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/progress">Progress</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/meeting">Meeting Note</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/draft">Draft</a></small>
+          
+
+        </h3>
+      </div>
+
+      <article class="post">
+  <h1 class="post-title">GT energy comparison</h1>
+  <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
+  <h3 id="compare-energy-with-ground-truth-l2">Compare energy with ground truth (L2)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">data</th>
+      <th style="text-align: center">type</th>
+      <th style="text-align: center">term1</th>
+      <th style="text-align: center">term2</th>
+      <th style="text-align: center">total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">bubble</td>
+      <td style="text-align: center">gt</td>
+      <td style="text-align: center">7.16217</td>
+      <td style="text-align: center">18.774</td>
+      <td style="text-align: center">25.93617</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">optimized</td>
+      <td style="text-align: center">2.13518</td>
+      <td style="text-align: center">2.47112</td>
+      <td style="text-align: center">4.6063</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">circle109</td>
+      <td style="text-align: center">gt</td>
+      <td style="text-align: center">7.29661</td>
+      <td style="text-align: center">22.6688</td>
+      <td style="text-align: center">29.96541</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">optimized</td>
+      <td style="text-align: center">2.38505</td>
+      <td style="text-align: center">3.17509</td>
+      <td style="text-align: center">5.56014</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">heart298</td>
+      <td style="text-align: center">gt </td>
+      <td style="text-align: center">11.3842</td>
+      <td style="text-align: center">36.7804</td>
+      <td style="text-align: center">48.1646</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">optimized </td>
+      <td style="text-align: center">1.89751</td>
+      <td style="text-align: center">2.03962</td>
+      <td style="text-align: center">3.93713</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">phone-hang-up</td>
+      <td style="text-align: center">gt </td>
+      <td style="text-align: center">4.8908</td>
+      <td style="text-align: center">12.161</td>
+      <td style="text-align: center">17.0518</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">optimized</td>
+      <td style="text-align: center">1.31873</td>
+      <td style="text-align: center">1.2576</td>
+      <td style="text-align: center">2.57633</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">rect1</td>
+      <td style="text-align: center">gt </td>
+      <td style="text-align: center"> 0.698162</td>
+      <td style="text-align: center">0.745405</td>
+      <td style="text-align: center">1.443567</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">optimized </td>
+      <td style="text-align: center"> 0.309573</td>
+      <td style="text-align: center">0.066709</td>
+      <td style="text-align: center">0.376282</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">triangle36</td>
+      <td style="text-align: center">gt </td>
+      <td style="text-align: center">8.25513</td>
+      <td style="text-align: center">21.9114</td>
+      <td style="text-align: center">30.16653</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">optimized</td>
+      <td style="text-align: center"> 2.50129</td>
+      <td style="text-align: center">3.12958</td>
+      <td style="text-align: center">5.63087</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I think one interesting thing to think about is that, our ground truth, are not necessary be the optimal for this energy, right?
+So for most cases (well, for all of these 6 examples), the optimized energies are lower than the energies from gt.</p>
+
+<p>One intriguing result to me is about circle109…
+Both terms from gt are higher than the optimized results (which is a wavy result, please see <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html">https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html</a>)</p>
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/05/Term-Comparison/">
+            Term comparison
+            <small><time datetime="2015-10-05T00:00:00-07:00">05 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/02/Optimization-draft/">
+            Optimization draft
+            <small><time datetime="2015-10-02T00:00:00-07:00">02 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/09/27/Alla-note/">
+            Alla's note.
+            <small><time datetime="2015-09-27T00:00:00-07:00">27 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+
+      <div class="footer">
+        <p>
+          &copy; 2015. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

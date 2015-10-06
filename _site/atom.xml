@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-05T13:40:03-07:00</updated>
+ <updated>2015-10-06T12:24:45-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -13,21 +13,145 @@
 
  
  <entry>
+   <title>GT energy comparison</title>
+   <link href="http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT/"/>
+   <updated>2015-10-06T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT</id>
+   <content type="html">&lt;h3 id=&quot;compare-energy-with-ground-truth-l2&quot;&gt;Compare energy with ground truth (L2)&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;data&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;term1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;term2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;total&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;bubble&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7.16217&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18.774&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;25.93617&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.13518&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.47112&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4.6063&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;circle109&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7.29661&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;22.6688&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29.96541&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.38505&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3.17509&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5.56014&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;heart298&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11.3842&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36.7804&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48.1646&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.89751&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.03962&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3.93713&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;phone-hang-up&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4.8908&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12.161&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17.0518&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.31873&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.2576&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2.57633&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;rect1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; 0.698162&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.745405&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.443567&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; 0.309573&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.066709&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.376282&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;triangle36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8.25513&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;21.9114&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30.16653&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; 2.50129&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3.12958&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5.63087&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I think one interesting thing to think about is that, our ground truth, are not necessary be the optimal for this energy, right?
+So for most cases (well, for all of these 6 examples), the optimized energies are lower than the energies from gt.&lt;/p&gt;
+
+&lt;p&gt;One intriguing result to me is about circle109…
+Both terms from gt are higher than the optimized results (which is a wavy result, please see &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&lt;/a&gt;)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Term comparison</title>
+   <link href="http://jdily.github.io/progress/2015/10/05/Term-Comparison/"/>
+   <updated>2015-10-05T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/05/Term-Comparison</id>
+   <content type="html">&lt;p&gt;Put some comparison for both term at &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Optimization draft</title>
    <link href="http://jdily.github.io/progress/2015/10/02/Optimization-draft/"/>
    <updated>2015-10-02T00:00:00-07:00</updated>
    <id>http://jdily.github.io/progress/2015/10/02/Optimization-draft</id>
-   <content type="html">&lt;h2 id=&quot;optimization-with-anisotropic-weights&quot;&gt;Optimization with anisotropic weights&lt;/h2&gt;
+   <content type="html">&lt;h2 id=&quot;optimization-with-spatial-varying-weights&quot;&gt;Optimization with spatial-varying weights&lt;/h2&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
 
 &lt;h3 id=&quot;term1--minimizing-curvature---emin--&quot;&gt;Term1 : minimizing curvature  &lt;script type=&quot;math/tex&quot;&gt; (E_{min})  &lt;/script&gt;&lt;/h3&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 &lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 &lt;/script&gt;
 
 &lt;h3 id=&quot;term2--keeping-curvature-constant---econst--&quot;&gt;Term2 : keeping curvature constant  &lt;script type=&quot;math/tex&quot;&gt; (E_{const})  &lt;/script&gt;&lt;/h3&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 &lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 &lt;/script&gt;
 
 &lt;h3 id=&quot;note&quot;&gt;Note&lt;/h3&gt;
 
@@ -40,9 +164,11 @@
 
 &lt;p&gt;To try out the optimization, I optimize different shapes and different weights combinations.&lt;/p&gt;
 
-&lt;h4 id=&quot;isotropic-weights&quot;&gt;isotropic weights&lt;/h4&gt;
+&lt;h4 id=&quot;uniform-weights&quot;&gt;uniform weights&lt;/h4&gt;
 
-&lt;p&gt;In these examples, I use both weighting as 0.5. Please see the following results:&lt;/p&gt;
+&lt;p&gt;In these examples, I use both weighting as 0.5, i.e. $W_1(e_i) = 0.5, W_2(e_i) = 0.5$ for each $i$. &lt;/p&gt;
+
+&lt;p&gt;Please see the following results:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&lt;/a&gt;&lt;/li&gt;
@@ -52,7 +178,7 @@
   &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-phone.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-phone.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;anisotropic-weights&quot;&gt;anisotropic weights&lt;/h4&gt;
+&lt;h4 id=&quot;spatial-varying-weights&quot;&gt;spatial-varying weights&lt;/h4&gt;
 
 &lt;p&gt;The thing is that I tried to add anisotropic weights into the optimization, but I didn’t get reasonable results when I manually set the weights.
 Most of the time, the result are just very close to the isotropic weights results.

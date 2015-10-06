@@ -67,17 +67,17 @@
       <article class="post">
   <h1 class="post-title">Optimization draft</h1>
   <time datetime="2015-10-02T00:00:00-07:00" class="post-date">02 Oct 2015</time>
-  <h2 id="optimization-with-anisotropic-weights">Optimization with anisotropic weights</h2>
+  <h2 id="optimization-with-spatial-varying-weights">Optimization with spatial-varying weights</h2>
 
 <script type="math/tex; mode=display"> E_{curve} = E_{min} + E_{const}</script>
 
 <h3 id="term1--minimizing-curvature---emin--">Term1 : minimizing curvature  <script type="math/tex"> (E_{min})  </script></h3>
 
-<script type="math/tex; mode=display">  \sum_{e_i} W_{1st(e_i)}\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
+<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
 
 <h3 id="term2--keeping-curvature-constant---econst--">Term2 : keeping curvature constant  <script type="math/tex"> (E_{const})  </script></h3>
 
-<script type="math/tex; mode=display">  \sum_{e_i } W_{2nd(e_i)} \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 </script>
+<script type="math/tex; mode=display">  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 </script>
 
 <h3 id="note">Note</h3>
 
@@ -90,9 +90,11 @@
 
 <p>To try out the optimization, I optimize different shapes and different weights combinations.</p>
 
-<h4 id="isotropic-weights">isotropic weights</h4>
+<h4 id="uniform-weights">uniform weights</h4>
 
-<p>In these examples, I use both weighting as 0.5. Please see the following results:</p>
+<p>In these examples, I use both weighting as 0.5, i.e. $W_1(e_i) = 0.5, W_2(e_i) = 0.5$ for each $i$. </p>
+
+<p>Please see the following results:</p>
 
 <ul>
   <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html">https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html</a></li>
@@ -102,7 +104,7 @@
   <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-phone.html">https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-phone.html</a></li>
 </ul>
 
-<h4 id="anisotropic-weights">anisotropic weights</h4>
+<h4 id="spatial-varying-weights">spatial-varying weights</h4>
 
 <p>The thing is that I tried to add anisotropic weights into the optimization, but I didn’t get reasonable results when I manually set the weights.
 Most of the time, the result are just very close to the isotropic weights results.
@@ -119,27 +121,27 @@ So I did a test that randomly generate the weights for every $e_i$, and the resu
     
       <li>
         <h3>
+          <a href="/progress/2015/10/06/Energy-comparison-with-GT/">
+            GT energy comparison
+            <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/05/Term-Comparison/">
+            Term comparison
+            <small><time datetime="2015-10-05T00:00:00-07:00">05 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/draft/2015/09/27/Alla-note/">
             Alla's note.
             <small><time datetime="2015-09-27T00:00:00-07:00">27 Sep 2015</time></small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/meeting/2015/09/23/meeting/">
-            Sep 23, 2015 Meeting note
-            <small><time datetime="2015-09-23T00:00:00-07:00">23 Sep 2015</time></small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/progress/2015/09/22/arrow-result/">
-            Arrow result
-            <small><time datetime="2015-09-22T00:00:00-07:00">22 Sep 2015</time></small>
           </a>
         </h3>
       </li>
