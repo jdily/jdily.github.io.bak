@@ -67,17 +67,26 @@
       <article class="post">
   <h1 class="post-title">Energy discussion</h1>
   <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
-  <h3 id="angle-version">angle version!?</h3>
+  <h3 id="normalization-problem">normalization problem</h3>
+<p>I think we may have problem with our current energy due to non-equal spacing.
+For the local smoothing operation, i.e. only term1</p>
 
-<h3 id="normalization-problem">normalization problem</h3>
-<p>I think we may have problem with our current energy due to non-equal spacing…</p>
+<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
+
+<p>we are trying to minimize the distance of blue arrow in the figure below (i.e. minimizing curvature) by encouraging flatten.</p>
+
+<p><img src="http://jdily.github.io/images/mini_curvature.png" alt="minimize curvature" /></p>
+
+<p>In this case, straight line should minimize this energy. However, I think that only happens when the spacing is equal. </p>
 
 <p>If all our results (e_i’s) are lying on the same line, as shown below:</p>
 
-<h4 id="with-equal-spacing">with equal spacing</h4>
+<p><img src="https:https://drive.google.com/file/d/0B-_yFoUkpgf1LWdRaDM0NDVfcWM/view?usp=sharing" alt="spacing comparison" /></p>
 
-<h4 id="with-non-equal-spacing">with non-equal spacing</h4>
-<p><img src="&quot;./images/spacing.png&quot;" alt="Spacing illustration" /></p>
+<p>As we can see in the figure, if the spacing is not equal, then even straight line can not minimize this energy, even though the curvature is already minimized..
+So I think the energy may need to be modified as taking the edge length proportion into consideration..</p>
+
+<h3 id="angle-version">angle version!?</h3>
 
 </article>
 

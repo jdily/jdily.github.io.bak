@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-07T10:26:49-07:00</updated>
+ <updated>2015-10-07T11:11:11-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -157,17 +157,26 @@ Both terms from gt are higher than the optimized results (which is a wavy result
    <link href="http://jdily.github.io/draft/2015/10/06/Energy-Discussion/"/>
    <updated>2015-10-06T00:00:00-07:00</updated>
    <id>http://jdily.github.io/draft/2015/10/06/Energy-Discussion</id>
-   <content type="html">&lt;h3 id=&quot;angle-version&quot;&gt;angle version!?&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;normalization-problem&quot;&gt;normalization problem&lt;/h3&gt;
+&lt;p&gt;I think we may have problem with our current energy due to non-equal spacing.
+For the local smoothing operation, i.e. only term1&lt;/p&gt;
 
-&lt;h3 id=&quot;normalization-problem&quot;&gt;normalization problem&lt;/h3&gt;
-&lt;p&gt;I think we may have problem with our current energy due to non-equal spacing…&lt;/p&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 &lt;/script&gt;
+
+&lt;p&gt;we are trying to minimize the distance of blue arrow in the figure below (i.e. minimizing curvature) by encouraging flatten.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://jdily.github.io/images/mini_curvature.png&quot; alt=&quot;minimize curvature&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this case, straight line should minimize this energy. However, I think that only happens when the spacing is equal. &lt;/p&gt;
 
 &lt;p&gt;If all our results (e_i’s) are lying on the same line, as shown below:&lt;/p&gt;
 
-&lt;h4 id=&quot;with-equal-spacing&quot;&gt;with equal spacing&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https:https://drive.google.com/file/d/0B-_yFoUkpgf1LWdRaDM0NDVfcWM/view?usp=sharing&quot; alt=&quot;spacing comparison&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;with-non-equal-spacing&quot;&gt;with non-equal spacing&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;&amp;quot;./images/spacing.png&amp;quot;&quot; alt=&quot;Spacing illustration&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;As we can see in the figure, if the spacing is not equal, then even straight line can not minimize this energy, even though the curvature is already minimized..
+So I think the energy may need to be modified as taking the edge length proportion into consideration..&lt;/p&gt;
+
+&lt;h3 id=&quot;angle-version&quot;&gt;angle version!?&lt;/h3&gt;
 </content>
  </entry>
  
