@@ -10,7 +10,7 @@
 
   <title>
     
-      Implementation detail &middot; Smooth Voxel Modeling
+      Energy discussion &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,23 +65,19 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Implementation detail</h1>
+  <h1 class="post-title">Energy discussion</h1>
   <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
-  <h2 id="optimization-with-spatial-varying-weights">Optimization with spatial-varying weights</h2>
+  <h3 id="angle-version">angle version!?</h3>
 
-<script type="math/tex; mode=display"> E_{curve} = E_{min} + E_{const}</script>
+<h3 id="normalization-problem">normalization problem</h3>
+<p>I think we may have problem with our current energy due to non-equal spacing…</p>
 
-<h3 id="term1--minimizing-curvature---emin--">Term1 : minimizing curvature  <script type="math/tex"> (E_{min})  </script></h3>
+<p>If all our results (e_i’s) are lying on the same line, as shown below:</p>
 
-<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
+<h4 id="with-equal-spacing">with equal spacing</h4>
 
-<h3 id="implementation">Implementation</h3>
-<p>#### variable : </p>
-
-<h3 id="term2--keeping-curvature-constant---econst--">Term2 : keeping curvature constant  <script type="math/tex"> (E_{const})  </script></h3>
-
-<script type="math/tex; mode=display">  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 </script>
-
+<h4 id="with-non-equal-spacing">with non-equal spacing</h4>
+<p><img src="&quot;./images/spacing.png&quot;" alt="Spacing illustration" /></p>
 
 </article>
 
@@ -89,6 +85,15 @@
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/06/Implementation-detail/">
+            Implementation detail
+            <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
     
       <li>
         <h3>
@@ -104,15 +109,6 @@
           <a href="/progress/2015/10/05/Term-Comparison/">
             Term comparison
             <small><time datetime="2015-10-05T00:00:00-07:00">05 Oct 2015</time></small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/progress/2015/10/02/Optimization-draft/">
-            Optimization draft
-            <small><time datetime="2015-10-02T00:00:00-07:00">02 Oct 2015</time></small>
           </a>
         </h3>
       </li>

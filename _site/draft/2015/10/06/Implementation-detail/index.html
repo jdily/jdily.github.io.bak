@@ -10,7 +10,7 @@
 
   <title>
     
-      Learning rate tuning &middot; Smooth Voxel Modeling
+      Implementation detail &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -25,6 +25,24 @@
   <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
 </head>
 
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
   
   <body>
 
@@ -47,46 +65,22 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Learning rate tuning</h1>
-  <time datetime="2015-09-17T00:00:00-07:00" class="post-date">17 Sep 2015</time>
-  <table>
-  <thead>
-    <tr>
-      <th style="text-align: center">learning rate</th>
-      <th style="text-align: center">loss</th>
-      <th style="text-align: center">loss</th>
-      <th style="text-align: center">loss</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">0.01</td>
-      <td style="text-align: center">0.0086047</td>
-      <td style="text-align: center">0.0098077</td>
-      <td style="text-align: center">0.0096455 </td>
-    </tr>
-    <tr>
-      <td style="text-align: center">0.1</td>
-      <td style="text-align: center">0.0061281 </td>
-      <td style="text-align: center">0.0057908</td>
-      <td style="text-align: center">0.0065994</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">0.2</td>
-      <td style="text-align: center"> 0.0084242</td>
-      <td style="text-align: center">0.0083152</td>
-      <td style="text-align: center">0.0074397</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">0.5</td>
-      <td style="text-align: center">0.0423556 </td>
-      <td style="text-align: center">0.0422975</td>
-      <td style="text-align: center"><font color="red">0.0124222 </font></td>
-    </tr>
-  </tbody>
-</table>
+  <h1 class="post-title">Implementation detail</h1>
+  <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
+  <h2 id="optimization-with-spatial-varying-weights">Optimization with spatial-varying weights</h2>
 
-<p>There is one strange loss for lr=0.5.. I ran it several times, and sometimes there is one smaller value… </p>
+<script type="math/tex; mode=display"> E_{curve} = E_{min} + E_{const}</script>
+
+<h3 id="term1--minimizing-curvature---emin--">Term1 : minimizing curvature  <script type="math/tex"> (E_{min})  </script></h3>
+
+<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
+
+<h3 id="implementation">Implementation</h3>
+<p>#### variable : </p>
+
+<h3 id="term2--keeping-curvature-constant---econst--">Term2 : keeping curvature constant  <script type="math/tex"> (E_{const})  </script></h3>
+
+<script type="math/tex; mode=display">  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 </script>
 
 
 </article>
@@ -95,15 +89,6 @@
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/draft/2015/10/06/Implementation-detail/">
-            Implementation detail
-            <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -119,6 +104,15 @@
           <a href="/draft/2015/10/06/Energy-Discussion/">
             Energy discussion
             <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/05/Term-Comparison/">
+            Term comparison
+            <small><time datetime="2015-10-05T00:00:00-07:00">05 Oct 2015</time></small>
           </a>
         </h3>
       </li>

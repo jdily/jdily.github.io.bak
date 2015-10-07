@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-06T14:18:02-07:00</updated>
+ <updated>2015-10-07T10:26:49-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Implementation detail</title>
-   <link href="http://jdily.github.io/progress/2015/10/06/Implementation-detail/"/>
+   <link href="http://jdily.github.io/draft/2015/10/06/Implementation-detail/"/>
    <updated>2015-10-06T00:00:00-07:00</updated>
-   <id>http://jdily.github.io/progress/2015/10/06/Implementation-detail</id>
+   <id>http://jdily.github.io/draft/2015/10/06/Implementation-detail</id>
    <content type="html">&lt;h2 id=&quot;optimization-with-spatial-varying-weights&quot;&gt;Optimization with spatial-varying weights&lt;/h2&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
@@ -149,6 +149,25 @@ So for most cases (well, for all of these 6 examples), the optimized energies ar
 
 &lt;p&gt;One intriguing result to me is about circle109…
 Both terms from gt are higher than the optimized results (which is a wavy result, please see &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/solver%20viz-circle109.html&lt;/a&gt;)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Energy discussion</title>
+   <link href="http://jdily.github.io/draft/2015/10/06/Energy-Discussion/"/>
+   <updated>2015-10-06T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/draft/2015/10/06/Energy-Discussion</id>
+   <content type="html">&lt;h3 id=&quot;angle-version&quot;&gt;angle version!?&lt;/h3&gt;
+
+&lt;h3 id=&quot;normalization-problem&quot;&gt;normalization problem&lt;/h3&gt;
+&lt;p&gt;I think we may have problem with our current energy due to non-equal spacing…&lt;/p&gt;
+
+&lt;p&gt;If all our results (e_i’s) are lying on the same line, as shown below:&lt;/p&gt;
+
+&lt;h4 id=&quot;with-equal-spacing&quot;&gt;with equal spacing&lt;/h4&gt;
+
+&lt;h4 id=&quot;with-non-equal-spacing&quot;&gt;with non-equal spacing&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;&amp;quot;./images/spacing.png&amp;quot;&quot; alt=&quot;Spacing illustration&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  

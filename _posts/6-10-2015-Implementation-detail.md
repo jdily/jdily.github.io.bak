@@ -1,7 +1,7 @@
 ---
 layout: post
 title : Implementation detail
-category: progress
+category: draft
 use_math: true
 ---
 ## Optimization with spatial-varying weights 
