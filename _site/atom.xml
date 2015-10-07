@@ -4,13 +4,41 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-07T11:11:11-07:00</updated>
+ <updated>2015-10-07T11:18:04-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Weekly summary</title>
+   <link href="http://jdily.github.io/progress/2015/10/07/Weekly-summary/"/>
+   <updated>2015-10-07T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/07/Weekly-summary</id>
+   <content type="html">&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;This week I worked on minimizing the energy, please see the webpage at:&lt;br /&gt;
+&lt;a href=&quot;http://jdily.github.io/progress/2015/10/02/Optimization-draft/&quot;&gt;http://jdily.github.io/progress/2015/10/02/Optimization-draft/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And compare the results using different terms, i.e. use each term independently.
+&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;And I also compare the ground truth with the optimized results in terms of energy:&lt;br /&gt;
+&lt;a href=&quot;http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT/&quot;&gt;http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Still work on a potential problem of current energy, please see&lt;br /&gt;
+&lt;a href=&quot;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&quot;&gt;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Implementation detail</title>
@@ -171,7 +199,7 @@ For the local smoothing operation, i.e. only term1&lt;/p&gt;
 
 &lt;p&gt;If all our results (e_i’s) are lying on the same line, as shown below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https:https://drive.google.com/file/d/0B-_yFoUkpgf1LWdRaDM0NDVfcWM/view?usp=sharing&quot; alt=&quot;spacing comparison&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://jdily.github.io/images/spacing.png&quot; alt=&quot;spacing comparison&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As we can see in the figure, if the spacing is not equal, then even straight line can not minimize this energy, even though the curvature is already minimized..
 So I think the energy may need to be modified as taking the edge length proportion into consideration..&lt;/p&gt;

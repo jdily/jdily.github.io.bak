@@ -10,7 +10,7 @@
 
   <title>
     
-      Energy discussion &middot; Smooth Voxel Modeling
+      Weekly summary &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,28 +65,28 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Energy discussion</h1>
-  <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
-  <h3 id="normalization-problem">normalization problem</h3>
-<p>I think we may have problem with our current energy due to non-equal spacing.
-For the local smoothing operation, i.e. only term1</p>
+  <h1 class="post-title">Weekly summary</h1>
+  <time datetime="2015-10-07T00:00:00-07:00" class="post-date">07 Oct 2015</time>
+  <h2 id="summary">Summary</h2>
 
-<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
-
-<p>we are trying to minimize the distance of blue arrow in the figure below (i.e. minimizing curvature) by encouraging flatten.</p>
-
-<p><img src="http://jdily.github.io/images/mini_curvature.png" alt="minimize curvature" /></p>
-
-<p>In this case, straight line should minimize this energy. However, I think that only happens when the spacing is equal. </p>
-
-<p>If all our results (e_i’s) are lying on the same line, as shown below:</p>
-
-<p><img src="http://jdily.github.io/images/spacing.png" alt="spacing comparison" /></p>
-
-<p>As we can see in the figure, if the spacing is not equal, then even straight line can not minimize this energy, even though the curvature is already minimized..
-So I think the energy may need to be modified as taking the edge length proportion into consideration..</p>
-
-<h3 id="angle-version">angle version!?</h3>
+<ul>
+  <li>
+    <p>This week I worked on minimizing the energy, please see the webpage at:<br />
+<a href="http://jdily.github.io/progress/2015/10/02/Optimization-draft/">http://jdily.github.io/progress/2015/10/02/Optimization-draft/</a></p>
+  </li>
+  <li>
+    <p>And compare the results using different terms, i.e. use each term independently.
+<a href="https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html">https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html</a></p>
+  </li>
+  <li>
+    <p>And I also compare the ground truth with the optimized results in terms of energy:<br />
+<a href="http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT/">http://jdily.github.io/progress/2015/10/06/Energy-comparison-with-GT/</a></p>
+  </li>
+  <li>
+    <p>Still work on a potential problem of current energy, please see<br />
+<a href="http://jdily.github.io/draft/2015/10/06/Energy-Discussion/">http://jdily.github.io/draft/2015/10/06/Energy-Discussion/</a></p>
+  </li>
+</ul>
 
 </article>
 
@@ -94,15 +94,6 @@ So I think the energy may need to be modified as taking the edge length proporti
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/progress/2015/10/07/Weekly-summary/">
-            Weekly summary
-            <small><time datetime="2015-10-07T00:00:00-07:00">07 Oct 2015</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -117,6 +108,15 @@ So I think the energy may need to be modified as taking the edge length proporti
         <h3>
           <a href="/progress/2015/10/06/Energy-comparison-with-GT/">
             GT energy comparison
+            <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/06/Energy-Discussion/">
+            Energy discussion
             <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
           </a>
         </h3>
