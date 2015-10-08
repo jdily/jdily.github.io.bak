@@ -10,7 +10,7 @@
 
   <title>
     
-      Term comparison &middot; Smooth Voxel Modeling
+      Oct 07, 2015 Meeting note &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -25,24 +25,6 @@
   <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
 </head>
 
-  
-      <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-    tex2jax: {
-      inlineMath: [ ['$','$']],
-      displayMath: [ ['$$','$$'] ],
-      processEscapes: true,
-    }
-  });
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
   
   <body>
 
@@ -65,11 +47,28 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Term comparison</h1>
-  <time datetime="2015-10-05T00:00:00-07:00" class="post-date">05 Oct 2015</time>
-  <p>Put some comparison for both term at </p>
+  <h1 class="post-title">Oct 07, 2015 Meeting note</h1>
+  <time datetime="2015-10-07T00:00:00-07:00" class="post-date">07 Oct 2015</time>
+  <h2 id="notes">Notes</h2>
 
-<p><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html">https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html</a></p>
+<ul>
+  <li>add an normalization process in the optimization to deal with the problem described in 
+<a href="http://jdily.github.io/draft/2015/10/06/Energy-Discussion/">http://jdily.github.io/draft/2015/10/06/Energy-Discussion/</a><br />
+    <ul>
+      <li>verify the new distance weighting using ground truth examples.</li>
+      <li>implement the alternative optimization process to generate desired results.</li>
+    </ul>
+  </li>
+  <li>add a bias into both energy terms, because for most of the curves, the laplacian and bi-laplacian may not be exactly 0. (i.e. we may not really want zero in our results)
+    <ul>
+      <li>also, verify this from some ground truth examples, i.e. for each vertex, compute both laplacian and bi-laplacian.</li>
+      <li>and in the end we can <strong>learn</strong> this bias as learning the prior (also, we can think about whether to keep the weights or not, because it is also kind of prior…)</li>
+    </ul>
+  </li>
+  <li>if anyone want to find the results or discussion for the original functions, please see
+<a href="http://jdily.github.io/progress/2015/10/07/Weekly-summary/">http://jdily.github.io/progress/2015/10/07/Weekly-summary/</a></li>
+</ul>
+
 
 </article>
 
@@ -77,15 +76,6 @@
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/meeting/2015/10/07/meeting/">
-            Oct 07, 2015 Meeting note
-            <small><time datetime="2015-10-07T00:00:00-07:00">07 Oct 2015</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -100,6 +90,15 @@
         <h3>
           <a href="/draft/2015/10/06/Implementation-detail/">
             Implementation detail
+            <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/06/Energy-comparison-with-GT/">
+            GT energy comparison
             <small><time datetime="2015-10-06T00:00:00-07:00">06 Oct 2015</time></small>
           </a>
         </h3>

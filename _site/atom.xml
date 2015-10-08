@@ -4,13 +4,41 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-07T11:18:04-07:00</updated>
+ <updated>2015-10-07T17:14:12-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Oct 07, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/10/07/meeting/"/>
+   <updated>2015-10-07T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/meeting/2015/10/07/meeting</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;add an normalization process in the optimization to deal with the problem described in 
+&lt;a href=&quot;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&quot;&gt;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&lt;/a&gt;&lt;br /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;verify the new distance weighting using ground truth examples.&lt;/li&gt;
+      &lt;li&gt;implement the alternative optimization process to generate desired results.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;add a bias into both energy terms, because for most of the curves, the laplacian and bi-laplacian may not be exactly 0. (i.e. we may not really want zero in our results)
+    &lt;ul&gt;
+      &lt;li&gt;also, verify this from some ground truth examples, i.e. for each vertex, compute both laplacian and bi-laplacian.&lt;/li&gt;
+      &lt;li&gt;and in the end we can &lt;strong&gt;learn&lt;/strong&gt; this bias as learning the prior (also, we can think about whether to keep the weights or not, because it is also kind of prior…)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;if anyone want to find the results or discussion for the original functions, please see
+&lt;a href=&quot;http://jdily.github.io/progress/2015/10/07/Weekly-summary/&quot;&gt;http://jdily.github.io/progress/2015/10/07/Weekly-summary/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Weekly summary</title>
