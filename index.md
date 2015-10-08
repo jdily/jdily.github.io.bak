@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: dummy
 title: Home
 ---
-{% include about.md %}
-{{ about }}
+<!-- {% include about.md %} -->
+<!-- {{ about }} -->
 
 <!-- <div class="posts">
   {}
