@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-11T10:49:50-07:00</updated>
+ <updated>2015-10-11T10:58:45-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -47,11 +47,7 @@ Here we first define a laplacian function for each $e_i$:&lt;/p&gt;
 
 &lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;{w}&#39;_{i+1}&lt;/script&gt; and ${w}’_{i+1}$  are respect to $\mathcal{L}(e_i)$.&lt;/p&gt;
 
-&lt;h2 id=&quot;todo&quot;&gt;TODO:&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;check rect1 groud truth   &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;comparison--both-gt-and-optimized-data-from-previous-energy-on-new-energy&quot;&gt;Comparison : both gt and optimized data (from previous energy) on new energy&lt;/h3&gt;
 
 &lt;table&gt;
   &lt;thead&gt;

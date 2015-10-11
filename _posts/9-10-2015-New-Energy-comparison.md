@@ -35,10 +35,7 @@ $$  \sum_{e_i } W_2(e_i) \| e_i - (w_{i-1}^{i}e_{i-1} +w_{i+1}^{i}e_{i+1})  
 
 where $${w}'_{i+1}$$ and ${w}'_{i+1}$  are respect to $\mathcal{L}(e_i)$.
 
-
-## TODO:
-
-- check rect1 groud truth   
+### Comparison : both gt and optimized data (from previous energy) on new energy 
 
 |  data | type  | term1  | term2  | total |
 |:--:|:---:|:---:|:---:|:---:|
