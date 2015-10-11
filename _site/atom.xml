@@ -4,13 +4,185 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-07T23:19:52-07:00</updated>
+ <updated>2015-10-11T10:49:50-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>New energy comparison</title>
+   <link href="http://jdily.github.io/progress/2015/10/09/New-Energy-comparison/"/>
+   <updated>2015-10-09T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/09/New-Energy-comparison</id>
+   <content type="html">&lt;p&gt;According to the discussion on Oct 07, we have to modify the function in terms of the problem mentioned in 
+&lt;a href=&quot;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&quot;&gt;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, we want to add a bias term for each data point, i.e. $b_i$, to reveal the fact that not all laplacian values from ground truth are 0..&lt;/p&gt;
+
+&lt;h2 id=&quot;optimization-with-weighted-laplacian-ie-normalize-the-distance&quot;&gt;Optimization with weighted laplacian (i.e. normalize the distance)&lt;/h2&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
+Here we first define a laplacian function for each $e_i$:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \mathcal{L}(e_i) = e_i - (w_{i-1}^{i}e_{i-1}+w_{i+1}^{i}e_{i+1})  &lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;w_{i-1}^{i}&lt;/script&gt; denotes as weight for $e_{i-1}$ with respect to $e_i$.&lt;/p&gt;
+
+&lt;h3 id=&quot;term1--minimizing-curvature---emin--&quot;&gt;Term1 : minimizing curvature  &lt;script type=&quot;math/tex&quot;&gt; (E_{min})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} \mathbf{W}_1(e_i)\| \mathcal{L}(e_i) - b_i^1\| _2^2 &lt;/script&gt;
+
+&lt;p&gt;where $b_i^1$ is a bias value for each $e_i$, and we can learn this $b_i^1$ from data.&lt;/p&gt;
+
+&lt;h3 id=&quot;term2--keeping-curvature-constant---econst--&quot;&gt;Term2 : keeping curvature constant  &lt;script type=&quot;math/tex&quot;&gt; (E_{const})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } \mathbf{W_2}(e_i) \| \mathcal{L}(\mathcal{L}(e_i)) - b^2_i  \|_2^2 &lt;/script&gt;
+
+&lt;p&gt;And can be expand as complicated version as follow:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_2(e_i) \| e_i - (w_{i-1}^{i}e_{i-1} +w_{i+1}^{i}e_{i+1})  - ( {w}&#39;_{i-1}[e_{i-1} - (w_{i-2}^{i-1}e_{i-2} + w_{i}^{i-1}e_{i})]+ {w}&#39;_{i+1}[e_{i+1} - (w_{i}^{i+1}e_{i} + w_{i+2}^{i}e_{i+2})]  )  \|_2^2 &lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;{w}&#39;_{i+1}&lt;/script&gt; and ${w}’_{i+1}$  are respect to $\mathcal{L}(e_i)$.&lt;/p&gt;
+
+&lt;h2 id=&quot;todo&quot;&gt;TODO:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;check rect1 groud truth   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;data&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;term1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;term2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;total&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;bubble&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.33&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.35&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;font color=&quot;blue&quot;&gt;0.68 &lt;/font&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.69&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.09&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;circle109&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.047&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.052&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;font color=&quot;blue&quot;&gt;0.099&lt;/font&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.69&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.61&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.30&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;heart298&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.45&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;font color=&quot;blue&quot;&gt;0.84 &lt;/font&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.74&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.47&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.21&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;phone-hang-up&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.27&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;font color=&quot;blue&quot;&gt;0.53 &lt;/font&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.44&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.21&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.65&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt;rect1&lt;/del&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt;gt (wrong gt) &lt;/del&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;  &lt;del&gt;0.67&lt;/del&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt;0.84 &lt;/del&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt; 1.51&lt;/del&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt;optimized&lt;/del&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;del&gt;0.25 &lt;/del&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt;0.06&lt;/del&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;del&gt;0.31 &lt;/del&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;triangle36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;gt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;font color=&quot;blue&quot;&gt;1.22 &lt;/font&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;optimized&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; 0.83&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.94&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1.77&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Revised optimization function</title>
+   <link href="http://jdily.github.io/draft/2015/10/09/Function-reformulate/"/>
+   <updated>2015-10-09T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/draft/2015/10/09/Function-reformulate</id>
+   <content type="html">&lt;p&gt;According to the discussion on Oct 07, we have to modify the function in terms of the problem mentioned in 
+&lt;a href=&quot;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&quot;&gt;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, we want to add a bias term for each data point, i.e. $b_i$, to reveal the fact that not all laplacian values from ground truth are 0..&lt;/p&gt;
+
+&lt;h2 id=&quot;optimization-with-weighted-laplacian-ie-normalize-the-distance&quot;&gt;Optimization with weighted laplacian (i.e. normalize the distance)&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
+
+&lt;h3 id=&quot;term1--minimizing-curvature---emin--&quot;&gt;Term1 : minimizing curvature  &lt;script type=&quot;math/tex&quot;&gt; (E_{min})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} \mathbf{W}_1(e_i)\| e_i - (w_{i-1}e_{i-1}+w_{i+1}e_{i+1}) - b_i\| _2^2 &lt;/script&gt;
+
+&lt;p&gt;where $b_i$ is a bias value for each $e_i$, and we can learn this $b_i$ from data.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;h4 id=&quot;variable-&quot;&gt;variable :&lt;/h4&gt;
+
+&lt;h3 id=&quot;term2--keeping-curvature-constant---econst--&quot;&gt;Term2 : keeping curvature constant  &lt;script type=&quot;math/tex&quot;&gt; (E_{const})  &lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 &lt;/script&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Oct 07, 2015 Meeting note</title>
@@ -36,7 +208,6 @@
   &lt;li&gt;if anyone want to find the results or discussion for the original functions, please see
 &lt;a href=&quot;http://jdily.github.io/progress/2015/10/07/Weekly-summary/&quot;&gt;http://jdily.github.io/progress/2015/10/07/Weekly-summary/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
 </content>
  </entry>
  
@@ -65,29 +236,6 @@
 &lt;a href=&quot;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&quot;&gt;http://jdily.github.io/draft/2015/10/06/Energy-Discussion/&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Implementation detail</title>
-   <link href="http://jdily.github.io/draft/2015/10/06/Implementation-detail/"/>
-   <updated>2015-10-06T00:00:00-07:00</updated>
-   <id>http://jdily.github.io/draft/2015/10/06/Implementation-detail</id>
-   <content type="html">&lt;h2 id=&quot;optimization-with-spatial-varying-weights&quot;&gt;Optimization with spatial-varying weights&lt;/h2&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
-
-&lt;h3 id=&quot;term1--minimizing-curvature---emin--&quot;&gt;Term1 : minimizing curvature  &lt;script type=&quot;math/tex&quot;&gt; (E_{min})  &lt;/script&gt;&lt;/h3&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 &lt;/script&gt;
-
-&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
-&lt;p&gt;#### variable : &lt;/p&gt;
-
-&lt;h3 id=&quot;term2--keeping-curvature-constant---econst--&quot;&gt;Term2 : keeping curvature constant  &lt;script type=&quot;math/tex&quot;&gt; (E_{const})  &lt;/script&gt;&lt;/h3&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 &lt;/script&gt;
-
 </content>
  </entry>
  
