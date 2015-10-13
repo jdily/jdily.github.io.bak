@@ -4,13 +4,80 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-11T10:58:45-07:00</updated>
+ <updated>2015-10-13T11:25:37-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Results from new optimization function</title>
+   <link href="http://jdily.github.io/progress/2015/10/13/New-Energy-Result/"/>
+   <updated>2015-10-13T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/13/New-Energy-Result</id>
+   <content type="html">&lt;p&gt;I have the first version of a new alternative solver to solve our new optimization function.
+Let me briefly re-explain what I am doing in this solver.
+Here is the function:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = E_{min} + E_{const}&lt;/script&gt;
+
+&lt;p&gt;Here we first define a laplacian function for each $e_i$:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; \mathcal{L}(e_i) = e_i - (w_{i-1}^{i}e_{i-1}+w_{i+1}^{i}e_{i+1})  &lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{min} = \sum_{e_i} \mathbf{W}_1(e_i)\| \mathcal{L}(e_i) - b_i^1\| _2^2 &lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{const} =  \sum_{e_i } \mathbf{W_2}(e_i) \| \mathcal{L}(\mathcal{L}(e_i)) - b^2_i  \|_2^2 &lt;/script&gt;
+
+&lt;h3 id=&quot;optimization-process&quot;&gt;Optimization process&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;initialize the variables ($t_i$ for each $e_i$) as 0.5.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;TODO&lt;/strong&gt;: check whether initial values of $t_i$ affects the results. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Use current $e_i$ to compute the weights for laplacian&lt;/li&gt;
+  &lt;li&gt;Solve $e_i$ by optimizing $E_{curve}$ with know weights from step 2.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Repeat 2, 3 until converge&lt;/strong&gt;..&lt;/p&gt;
+
+&lt;h3 id=&quot;optimization-result&quot;&gt;Optimization result.&lt;/h3&gt;
+&lt;p&gt;For all the results shown below, I first set both $\mathbf{W}_1$ and $\mathbf{W}_2$ as 0.5, for every $e_i$.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Please see the following results:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-bubble.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-bubble.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-circle109.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-circle109.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-heart298.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-heart298.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-phone.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-phone.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect1.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect1.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect2.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect2.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-triangle36.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-triangle36.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Discussion&lt;/strong&gt;:&lt;br /&gt;
+1. I think the visualization is not so easy to view, do you have any good suggestion to show the boundary lines clearer? (in contrast to the background shape..)&lt;br /&gt;
+2. Right now we have two kinds of weights&lt;br /&gt;
+	1. spatial-varying weights Alla proposed : ($\mathbf{W}&lt;em&gt;1$ and $\mathbf{W}_2$)
+	2. the weights for distance weighted laplacian (&lt;script type=&quot;math/tex&quot;&gt;w_{i-1}&lt;/script&gt; and $w&lt;/em&gt;{i+1}$ and more in $\mathcal{L}(e_i)$)    &lt;br /&gt;
+I think we can come up some different names or notations for express them. Or it is a little bit confusing during discussion..
+3. I’ll start to work on manually assign different &lt;strong&gt;spatial-varying&lt;/strong&gt; weights. &lt;br /&gt;
+4. I am also interested in testing the different initialization values for each $t_i$.  &lt;br /&gt;
+5. Observed from all the above examples, I found out that our thoughts about bias term might be right. &lt;br /&gt;
+The reason is that for most of the new optimized results I got, their energies are lower than their ground truth’s energies.
+I think this means to ``reproduce’’ the ground truth, the targets of laplacian and bi-laplacian are not perfectly zero.
+(I do found out this during some tests, so if needed, I can come up some tables to show these statistics.)&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+ </entry>
  
  <entry>
    <title>New energy comparison</title>

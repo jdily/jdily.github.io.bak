@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Results from new optimization function &middot; Smooth Voxel Modeling
+    
+  </title>
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css"> -->
+  <link rel="stylesheet" href="http://jdily.github.io/styles.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
+</head>
+
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+  <body>
+
+    <div class="container content">
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/problem" title="Home">Smooth Voxel Modeling</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/problem">Problem</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/progress">Progress</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/meeting">Meeting Note</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/draft">Draft</a></small>
+          
+
+        </h3>
+      </div>
+
+      <article class="post">
+  <h1 class="post-title">Results from new optimization function</h1>
+  <time datetime="2015-10-13T00:00:00-07:00" class="post-date">13 Oct 2015</time>
+  <p>I have the first version of a new alternative solver to solve our new optimization function.
+Let me briefly re-explain what I am doing in this solver.
+Here is the function:</p>
+
+<script type="math/tex; mode=display"> E_{curve} = E_{min} + E_{const}</script>
+
+<p>Here we first define a laplacian function for each $e_i$:</p>
+
+<script type="math/tex; mode=display"> \mathcal{L}(e_i) = e_i - (w_{i-1}^{i}e_{i-1}+w_{i+1}^{i}e_{i+1})  </script>
+
+<script type="math/tex; mode=display"> E_{min} = \sum_{e_i} \mathbf{W}_1(e_i)\| \mathcal{L}(e_i) - b_i^1\| _2^2 </script>
+
+<script type="math/tex; mode=display"> E_{const} =  \sum_{e_i } \mathbf{W_2}(e_i) \| \mathcal{L}(\mathcal{L}(e_i)) - b^2_i  \|_2^2 </script>
+
+<h3 id="optimization-process">Optimization process</h3>
+<ol>
+  <li>initialize the variables ($t_i$ for each $e_i$) as 0.5.</li>
+</ol>
+
+<blockquote>
+  <p><strong>TODO</strong>: check whether initial values of $t_i$ affects the results. </p>
+</blockquote>
+
+<ol>
+  <li>Use current $e_i$ to compute the weights for laplacian</li>
+  <li>Solve $e_i$ by optimizing $E_{curve}$ with know weights from step 2.</li>
+</ol>
+
+<p><strong>Repeat 2, 3 until converge</strong>..</p>
+
+<h3 id="optimization-result">Optimization result.</h3>
+<p>For all the results shown below, I first set both $\mathbf{W}_1$ and $\mathbf{W}_2$ as 0.5, for every $e_i$.</p>
+
+<p><strong>Please see the following results:</strong></p>
+
+<ul>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-bubble.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-bubble.html</a></li>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-circle109.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-circle109.html</a></li>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-heart298.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-heart298.html</a></li>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-phone.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-phone.html</a></li>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect1.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect1.html</a></li>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect2.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-rect2.html</a></li>
+  <li><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-triangle36.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-solver-viz-triangle36.html</a></li>
+</ul>
+
+<blockquote>
+  <p><strong>Discussion</strong>:<br />
+1. I think the visualization is not so easy to view, do you have any good suggestion to show the boundary lines clearer? (in contrast to the background shape..)<br />
+2. Right now we have two kinds of weights<br />
+	1. spatial-varying weights Alla proposed : ($\mathbf{W}<em>1$ and $\mathbf{W}_2$)
+	2. the weights for distance weighted laplacian (<script type="math/tex">w_{i-1}</script> and $w</em>{i+1}$ and more in $\mathcal{L}(e_i)$)    <br />
+I think we can come up some different names or notations for express them. Or it is a little bit confusing during discussion..
+3. I’ll start to work on manually assign different <strong>spatial-varying</strong> weights. <br />
+4. I am also interested in testing the different initialization values for each $t_i$.  <br />
+5. Observed from all the above examples, I found out that our thoughts about bias term might be right. <br />
+The reason is that for most of the new optimized results I got, their energies are lower than their ground truth’s energies.
+I think this means to ``reproduce’’ the ground truth, the targets of laplacian and bi-laplacian are not perfectly zero.
+(I do found out this during some tests, so if needed, I can come up some tables to show these statistics.)</p>
+</blockquote>
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/09/New-Energy-comparison/">
+            New energy comparison
+            <small><time datetime="2015-10-09T00:00:00-07:00">09 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/09/Function-reformulate/">
+            Revised optimization function
+            <small><time datetime="2015-10-09T00:00:00-07:00">09 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/meeting/2015/10/07/meeting/">
+            Oct 07, 2015 Meeting note
+            <small><time datetime="2015-10-07T00:00:00-07:00">07 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+
+      <div class="footer">
+        <p>
+          &copy; 2015. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
