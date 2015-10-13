@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-13T11:25:37-07:00</updated>
+ <updated>2015-10-13T11:28:58-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -66,8 +66,8 @@ Here is the function:&lt;/p&gt;
   &lt;p&gt;&lt;strong&gt;Discussion&lt;/strong&gt;:&lt;br /&gt;
 1. I think the visualization is not so easy to view, do you have any good suggestion to show the boundary lines clearer? (in contrast to the background shape..)&lt;br /&gt;
 2. Right now we have two kinds of weights&lt;br /&gt;
-	1. spatial-varying weights Alla proposed : ($\mathbf{W}&lt;em&gt;1$ and $\mathbf{W}_2$)
-	2. the weights for distance weighted laplacian (&lt;script type=&quot;math/tex&quot;&gt;w_{i-1}&lt;/script&gt; and $w&lt;/em&gt;{i+1}$ and more in $\mathcal{L}(e_i)$)    &lt;br /&gt;
+	1. spatial-varying weights Alla proposed : (&lt;script type=&quot;math/tex&quot;&gt;\mathbf{W}_1&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\mathbf{W}_2&lt;/script&gt;)&lt;br /&gt;
+	2. the weights for distance weighted laplacian (&lt;script type=&quot;math/tex&quot;&gt;w_{i-1}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;w_{i+1}&lt;/script&gt; and more in &lt;script type=&quot;math/tex&quot;&gt;\mathcal{L}(e_i)&lt;/script&gt;)      &lt;br /&gt;
 I think we can come up some different names or notations for express them. Or it is a little bit confusing during discussion..
 3. I’ll start to work on manually assign different &lt;strong&gt;spatial-varying&lt;/strong&gt; weights. &lt;br /&gt;
 4. I am also interested in testing the different initialization values for each $t_i$.  &lt;br /&gt;
