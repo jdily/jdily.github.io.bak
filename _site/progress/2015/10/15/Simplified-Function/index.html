@@ -10,7 +10,7 @@
 
   <title>
     
-      Oct 14, 2015 Meeting note &middot; Smooth Voxel Modeling
+      Some thoughts and experiment about simplified function. &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,31 +65,32 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Oct 14, 2015 Meeting note</h1>
+  <h1 class="post-title">Some thoughts and experiment about simplified function.</h1>
   <time datetime="2015-10-15T00:00:00-07:00" class="post-date">15 Oct 2015</time>
-  <h1 id="notes">Notes</h1>
-<p><img src="http://jdily.github.io/images/note-20131014.png" alt="meeting sketch" /></p>
+  <h2 id="simplified-function">Simplified function</h2>
 
-<ul>
-  <li>there is no need to keep both laplacian and bi-laplacian in the same time if we add <strong>data-driven</strong> bias term.
-    <ul>
-      <li>In the sketch figure, basically if we keep both terms and use weights to control the local behavior, it’s basically similar to use only one term with spatial-varying bias term. </li>
-    </ul>
-  </li>
-  <li>we can get two things from ground truth (and those are things that we can possibly infer from data), please see triangle in the figure:
-    <ul>
-      <li>laplacian vector</li>
-      <li>weights for weighted laplacian ($w_p$ and $w_n$)</li>
-    </ul>
-  </li>
-</ul>
+<script type="math/tex; mode=display"> E_{curve} = \sum_{e_i} \| e_i - (w_{i-1}^{i}e_{i-1}+w_{i+1}^{i}e_{i+1}) - b_i \| ^2_2</script>
 
-<p>And we have two strategies to tackle this problem:</p>
+<h2 id="solve-approach">Solve approach</h2>
+<p>To solve $E_{curve}$, we need <script type="math/tex">w_{i-1}</script>, <script type="math/tex"> w_{i+1}</script> and $b_i$ for each $e_i$.</p>
 
-<ol>
-  <li>learn all those values (3 values in 2D, including 2-dim laplacian vector, and one scalar weight ($w_p+w_n=1.0$) ).</li>
-  <li>only learn laplacian vector, and use alternative optimization to optimize $w_p$ and $w_n$.	</li>
-</ol>
+<p>For $b_i$, we are basically try to learn it from data, so that it is a <strong>data-driven</strong> bias, that can encode style of the input dataset while we are reconstructing the surface.</p>
+
+<p>For <script type="math/tex">w_{i-1}</script> and <script type="math/tex">w_{i+1}</script>, they are used for compute the weighted laplacian.
+And I think we have two different approaches to get these values.</p>
+
+<h3 id="direct-inferring">direct inferring</h3>
+<p>As Nathan described in the meeting, because we can also get this values from ground truth, we can also try to learn it from data.
+I put some initial results at </p>
+
+<p><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/gt-laplacian-and-weights-results.html">https://www.cs.ubc.ca/~ichaos/research/nbview/gt-laplacian-and-weights-results.html</a></p>
+
+<p>The results looks perfect, but I am still trying to figure out why I don’t even provide a positional constraint.</p>
+
+<h3 id="alternative-optimization">alternative optimization</h3>
+<p>I can also use alternative optimization method, that only take inferred bias as known, and alternatively optimize the weights and $e_i$.</p>
+
+<p><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/alt-opt-circle-comparison.html">https://www.cs.ubc.ca/~ichaos/research/nbview/alt-opt-circle-comparison.html</a></p>
 
 </article>
 
@@ -100,8 +101,8 @@
     
       <li>
         <h3>
-          <a href="/progress/2015/10/15/Simplified-Function/">
-            Some thoughts and experiment about simplified function.
+          <a href="/meeting/2015/10/15/Oct14-meeting-note/">
+            Oct 14, 2015 Meeting note
             <small><time datetime="2015-10-15T00:00:00-07:00">15 Oct 2015</time></small>
           </a>
         </h3>

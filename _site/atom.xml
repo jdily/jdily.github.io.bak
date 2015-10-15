@@ -4,13 +4,45 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-15T16:25:31-07:00</updated>
+ <updated>2015-10-15T16:54:44-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Some thoughts and experiment about simplified function.</title>
+   <link href="http://jdily.github.io/progress/2015/10/15/Simplified-Function/"/>
+   <updated>2015-10-15T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/progress/2015/10/15/Simplified-Function</id>
+   <content type="html">&lt;h2 id=&quot;simplified-function&quot;&gt;Simplified function&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; E_{curve} = \sum_{e_i} \| e_i - (w_{i-1}^{i}e_{i-1}+w_{i+1}^{i}e_{i+1}) - b_i \| ^2_2&lt;/script&gt;
+
+&lt;h2 id=&quot;solve-approach&quot;&gt;Solve approach&lt;/h2&gt;
+&lt;p&gt;To solve $E_{curve}$, we need &lt;script type=&quot;math/tex&quot;&gt;w_{i-1}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt; w_{i+1}&lt;/script&gt; and $b_i$ for each $e_i$.&lt;/p&gt;
+
+&lt;p&gt;For $b_i$, we are basically try to learn it from data, so that it is a &lt;strong&gt;data-driven&lt;/strong&gt; bias, that can encode style of the input dataset while we are reconstructing the surface.&lt;/p&gt;
+
+&lt;p&gt;For &lt;script type=&quot;math/tex&quot;&gt;w_{i-1}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;w_{i+1}&lt;/script&gt;, they are used for compute the weighted laplacian.
+And I think we have two different approaches to get these values.&lt;/p&gt;
+
+&lt;h3 id=&quot;direct-inferring&quot;&gt;direct inferring&lt;/h3&gt;
+&lt;p&gt;As Nathan described in the meeting, because we can also get this values from ground truth, we can also try to learn it from data.
+I put some initial results at &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/gt-laplacian-and-weights-results.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/gt-laplacian-and-weights-results.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The results looks perfect, but I am still trying to figure out why I don’t even provide a positional constraint.&lt;/p&gt;
+
+&lt;h3 id=&quot;alternative-optimization&quot;&gt;alternative optimization&lt;/h3&gt;
+&lt;p&gt;I can also use alternative optimization method, that only take inferred bias as known, and alternatively optimize the weights and $e_i$.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-opt-circle-comparison.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/alt-opt-circle-comparison.html&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Oct 14, 2015 Meeting note</title>
