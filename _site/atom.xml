@@ -4,13 +4,44 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-13T11:28:58-07:00</updated>
+ <updated>2015-10-15T16:25:31-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Oct 14, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/10/15/Oct14-meeting-note/"/>
+   <updated>2015-10-15T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/meeting/2015/10/15/Oct14-meeting-note</id>
+   <content type="html">&lt;h1 id=&quot;notes&quot;&gt;Notes&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;http://jdily.github.io/images/note-20131014.png&quot; alt=&quot;meeting sketch&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there is no need to keep both laplacian and bi-laplacian in the same time if we add &lt;strong&gt;data-driven&lt;/strong&gt; bias term.
+    &lt;ul&gt;
+      &lt;li&gt;In the sketch figure, basically if we keep both terms and use weights to control the local behavior, it’s basically similar to use only one term with spatial-varying bias term. &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;we can get two things from ground truth (and those are things that we can possibly infer from data), please see triangle in the figure:
+    &lt;ul&gt;
+      &lt;li&gt;laplacian vector&lt;/li&gt;
+      &lt;li&gt;weights for weighted laplacian ($w_p$ and $w_n$)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And we have two strategies to tackle this problem:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;learn all those values (3 values in 2D, including 2-dim laplacian vector, and one scalar weight ($w_p+w_n=1.0$) ).&lt;/li&gt;
+  &lt;li&gt;only learn laplacian vector, and use alternative optimization to optimize $w_p$ and $w_n$.	&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Results from new optimization function</title>
