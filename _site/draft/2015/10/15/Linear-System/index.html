@@ -10,7 +10,7 @@
 
   <title>
     
-      Term comparison &middot; Smooth Voxel Modeling
+      Linear System &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,11 +65,30 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Term comparison</h1>
-  <time datetime="2015-10-05T00:00:00-07:00" class="post-date">05 Oct 2015</time>
-  <p>Put some comparison for both term at </p>
+  <h1 class="post-title">Linear System</h1>
+  <time datetime="2015-10-15T00:00:00-07:00" class="post-date">15 Oct 2015</time>
+  <h2 id="detail-of-the-linear-system">Detail of the linear system</h2>
 
-<p><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html">https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html</a></p>
+<p>For each $e_i$, we have </p>
+
+<script type="math/tex; mode=display">e_i - w_{p}e_{p} - w_{n}e_{n} = b_i </script>
+
+<p>where $p = i-1$ and $n = i+1$.</p>
+
+<p>So far, I formulate the optimization in terms of $t_i$, so the previous equation can be transformed into:</p>
+
+<script type="math/tex; mode=display"> 
+P_{i0}\cdot (1-t_i)+P_{i1} \cdot t_i - w_{p}\cdot (P_{p0}\cdot (1-t_p)+P_{p1}\cdot t_p) - w_{n}\cdot (P_{n0}\cdot (1-t_n)+P_{n1}\cdot t_n) 
+= b_i
+</script>
+
+<script type="math/tex; mode=display">
+t_i \cdot (P_{i1} - P_{i0}) - t_p \cdot w_p \cdot (P_{p1}-P_{p0}) -  t_n \cdot w_n \cdot (P_{n1}-P_{n0}) =  b_i - P_{i0} + w_p\cdot P_{p0} + w_n\cdot P_{n0}
+</script>
+
+<p>and all the $P_{xx}$ and $b_i$ are 2D vectors in current 2D setting.
+It means we have two equations for each $t_i$, and i think it leads to an over-determined system.
+So if we have $n$ unknowns (i.e. <script type="math/tex">t_0... t_{n-1}</script>), then we will get a <script type="math/tex">2n\times n</script> matrix $A$ before add any positional constraints (boundary condition.)</p>
 
 </article>
 
@@ -98,9 +117,9 @@
     
       <li>
         <h3>
-          <a href="/draft/2015/10/15/Linear-System/">
-            Linear System
-            <small><time datetime="2015-10-15T00:00:00-07:00">15 Oct 2015</time></small>
+          <a href="/progress/2015/10/13/New-Energy-Result/">
+            Results from new optimization function
+            <small><time datetime="2015-10-13T00:00:00-07:00">13 Oct 2015</time></small>
           </a>
         </h3>
       </li>
