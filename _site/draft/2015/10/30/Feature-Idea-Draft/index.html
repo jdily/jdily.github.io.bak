@@ -10,7 +10,7 @@
 
   <title>
     
-      Revised optimization function &middot; Smooth Voxel Modeling
+      Feature illustration &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,30 +65,27 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Revised optimization function</h1>
-  <time datetime="2015-10-09T00:00:00-07:00" class="post-date">09 Oct 2015</time>
-  <p>According to the discussion on Oct 07, we have to modify the function in terms of the problem mentioned in 
-<a href="http://jdily.github.io/draft/2015/10/06/Energy-Discussion/">http://jdily.github.io/draft/2015/10/06/Energy-Discussion/</a></p>
+  <h1 class="post-title">Feature illustration</h1>
+  <time datetime="2015-10-30T00:00:00-07:00" class="post-date">30 Oct 2015</time>
+  <p>For each shape, in both training and testing phase, we start from the low-resolution image, </p>
 
-<p>Also, we want to add a bias term for each data point, i.e. $b_i$, to reveal the fact that not all laplacian values from ground truth are 0..</p>
+<ul>
+  <li>we start from sampling points at the center of each open edge (the red dot in the figure below).</li>
+  <li>After this step, we already got the initial connectivity (or say topology) of the desired shape (the green line in the figure).</li>
+</ul>
 
-<h2 id="optimization-with-weighted-laplacian-ie-normalize-the-distance">Optimization with weighted laplacian (i.e. normalize the distance)</h2>
+<p>In my understanding, our problem can be viewed as given this topology, we want to refine the shape to match some properties, e.g. desired curvatures in our current case.
+<img src="http://jdily.github.io/images/topology.png" alt="raw representation" /></p>
 
-<script type="math/tex; mode=display"> E_{curve} = E_{min} + E_{const}</script>
+<p>With the fixed topology, what remain to decide is the positions of the vertices.</p>
 
-<h3 id="term1--minimizing-curvature---emin--">Term1 : minimizing curvature  <script type="math/tex"> (E_{min})  </script></h3>
+<p>For each sample location, we open a window (like the figure below), and the <strong>raw representation</strong> of this place is the relative coordinates we used right now.
+So far, we feed these locations w/o any further information, and expect the network to extract some hidden information base on this.
+<img src="http://jdily.github.io/images/local_window.png" alt="raw representation" /></p>
 
-<script type="math/tex; mode=display">  \sum_{e_i} \mathbf{W}_1(e_i)\| e_i - (w_{i-1}e_{i-1}+w_{i+1}e_{i+1}) - b_i\| _2^2 </script>
-
-<p>where $b_i$ is a bias value for each $e_i$, and we can learn this $b_i$ from data.</p>
-
-<h3 id="implementation">Implementation</h3>
-
-<h4 id="variable-">variable :</h4>
-
-<h3 id="term2--keeping-curvature-constant---econst--">Term2 : keeping curvature constant  <script type="math/tex"> (E_{const})  </script></h3>
-
-<script type="math/tex; mode=display">  \sum_{e_i } W_2(e_i) \| e_i - (e_{i-1} + e_{i+1})/2  - (e_{i-1} - (e_{i-2} + e_{i})/2 + e_{i+1} - (e_{i} + e_{i+2})/2  )/2  \|_2^2 </script>
+<p>And what I am trying to think is that if we can extract some information from this initial shape.
+Say, treat it also as a shape, and extract the curvature value using $ | \mathcal{L}(e_i) |_2$, where $\mathcal{L}$ is the laplacian operator.
+And this is correspond to Zhaowen’s manually extract some information.</p>
 
 
 </article>
@@ -97,15 +94,6 @@
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/draft/2015/10/30/Feature-Idea-Draft/">
-            Feature illustration
-            <small><time datetime="2015-10-30T00:00:00-07:00">30 Oct 2015</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -121,6 +109,15 @@
           <a href="/draft/2015/10/16/Learning-Bias-Draft/">
             Learning the bias term from data
             <small><time datetime="2015-10-16T00:00:00-07:00">16 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/10/15/Simplified-Function/">
+            Some thoughts and experiment about simplified function.
+            <small><time datetime="2015-10-15T00:00:00-07:00">15 Oct 2015</time></small>
           </a>
         </h3>
       </li>
