@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-30T11:14:19-07:00</updated>
+ <updated>2015-10-30T11:30:41-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -29,13 +29,27 @@
 
 &lt;p&gt;With the fixed topology, what remain to decide is the positions of the vertices.&lt;/p&gt;
 
-&lt;p&gt;For each sample location, we open a window (like the figure below), and the &lt;strong&gt;raw representation&lt;/strong&gt; of this place is the relative coordinates we used right now.
-So far, we feed these locations w/o any further information, and expect the network to extract some hidden information base on this.
+&lt;p&gt;For each sample location, we open a window (like the figure below, the size in this example is 11, 5 for each direction), and the &lt;strong&gt;raw representation&lt;/strong&gt; of this place is the relative coordinates we used right now.
+So far, we feed these locations w/o any further information, so the current feature &lt;script type=&quot;math/tex&quot;&gt;f_{i} \in \mathcal{R}^{20}&lt;/script&gt;is &lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; 
+f_{i} = (\mathit{P}_{-5}(x, y), \mathit{P}_{-4}(x, y), \mathit{P}_{-3}(x, y), \mathit{P}_{-2}(x, y), \mathit{P}_{-1}(x, y), \\
+ \mathit{P}_{1}(x, y),  \mathit{P}_{2}(x, y),  \mathit{P}_{3}(x, y),  \mathit{P}_{4}(x, y),  \mathit{P}_{5}(x, y))
+&lt;/script&gt;
+
+&lt;p&gt;and expect the network to extract some hidden information base on this.
 &lt;img src=&quot;http://jdily.github.io/images/local_window.png&quot; alt=&quot;raw representation&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And what I am trying to think is that if we can extract some information from this initial shape.
-Say, treat it also as a shape, and extract the curvature value using $ | \mathcal{L}(e_i) |_2$, where $\mathcal{L}$ is the laplacian operator.
-And this is correspond to Zhaowen’s manually extract some information.&lt;/p&gt;
+Say, treat it also as a shape, and extract the curvature value using &lt;script type=&quot;math/tex&quot;&gt; \| \mathcal{L}(e_i) \|_2&lt;/script&gt;, where $\mathcal{L}$ is the laplacian operator.
+So in this case, our feature vector &lt;script type=&quot;math/tex&quot;&gt;\tilde{f}_{i} \in \mathcal{R}^{11}&lt;/script&gt; will become like:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; 
+\tilde{f}_{i} = (\mathit{K}_{-5}, \mathit{K}_{-4}, \mathit{K}_{-3}, \mathit{K}_{-2}, \mathit{K}_{-1}, \mathit{K}_{0},  
+ \mathit{K}_{1},  \mathit{K}_{2},  \mathit{K}_{3},  \mathit{K}_{4},  \mathit{K}_{5})
+&lt;/script&gt;
+
+&lt;p&gt;And this is correspond to Zhaowen’s manually extract some information.&lt;/p&gt;
 
 </content>
  </entry>

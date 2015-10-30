@@ -79,13 +79,27 @@
 
 <p>With the fixed topology, what remain to decide is the positions of the vertices.</p>
 
-<p>For each sample location, we open a window (like the figure below), and the <strong>raw representation</strong> of this place is the relative coordinates we used right now.
-So far, we feed these locations w/o any further information, and expect the network to extract some hidden information base on this.
+<p>For each sample location, we open a window (like the figure below, the size in this example is 11, 5 for each direction), and the <strong>raw representation</strong> of this place is the relative coordinates we used right now.
+So far, we feed these locations w/o any further information, so the current feature <script type="math/tex">f_{i} \in \mathcal{R}^{20}</script>is </p>
+
+<script type="math/tex; mode=display"> 
+f_{i} = (\mathit{P}_{-5}(x, y), \mathit{P}_{-4}(x, y), \mathit{P}_{-3}(x, y), \mathit{P}_{-2}(x, y), \mathit{P}_{-1}(x, y), \\
+ \mathit{P}_{1}(x, y),  \mathit{P}_{2}(x, y),  \mathit{P}_{3}(x, y),  \mathit{P}_{4}(x, y),  \mathit{P}_{5}(x, y))
+</script>
+
+<p>and expect the network to extract some hidden information base on this.
 <img src="http://jdily.github.io/images/local_window.png" alt="raw representation" /></p>
 
 <p>And what I am trying to think is that if we can extract some information from this initial shape.
-Say, treat it also as a shape, and extract the curvature value using $ | \mathcal{L}(e_i) |_2$, where $\mathcal{L}$ is the laplacian operator.
-And this is correspond to Zhaowen’s manually extract some information.</p>
+Say, treat it also as a shape, and extract the curvature value using <script type="math/tex"> \| \mathcal{L}(e_i) \|_2</script>, where $\mathcal{L}$ is the laplacian operator.
+So in this case, our feature vector <script type="math/tex">\tilde{f}_{i} \in \mathcal{R}^{11}</script> will become like:</p>
+
+<script type="math/tex; mode=display"> 
+\tilde{f}_{i} = (\mathit{K}_{-5}, \mathit{K}_{-4}, \mathit{K}_{-3}, \mathit{K}_{-2}, \mathit{K}_{-1}, \mathit{K}_{0},  
+ \mathit{K}_{1},  \mathit{K}_{2},  \mathit{K}_{3},  \mathit{K}_{4},  \mathit{K}_{5})
+</script>
+
+<p>And this is correspond to Zhaowen’s manually extract some information.</p>
 
 
 </article>
