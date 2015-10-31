@@ -45,7 +45,7 @@ Originally I am thinking if we can extract some real-value only and use them as 
 However, if I insert the original feature (0 0 3 0 3 0 0 0 0) into database, and  then I want to also insert Mirror x version into database,
 it lead to an ambiguity.
 Both of them share the same feature vector (0 0 3 0 3 0 0 0 0), however, the desired result laplacian vectors are not in the same direction.
-So I think I will use the laplacian vector feature instead.
+So I think I will use the **laplacian vector feature** instead.
 
 #### Avoid direction inference
 
