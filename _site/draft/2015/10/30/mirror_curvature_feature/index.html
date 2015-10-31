@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Curvature, mirror feature discussion &middot; Smooth Voxel Modeling
+    
+  </title>
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css"> -->
+  <link rel="stylesheet" href="http://jdily.github.io/styles.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
+</head>
+
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+  <body>
+
+    <div class="container content">
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/problem" title="Home">Smooth Voxel Modeling</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/problem">Problem</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/progress">Progress</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/meeting">Meeting Note</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/draft">Draft</a></small>
+          
+
+        </h3>
+      </div>
+
+      <article class="post">
+  <h1 class="post-title">Curvature, mirror feature discussion</h1>
+  <time datetime="2015-10-30T00:00:00-07:00" class="post-date">30 Oct 2015</time>
+  <p>I try to draw some diagrams to describe my idea and combine the mirror idea that Nathan mentioned in the morning.
+The window size used in the figure below is 9, i.e. 4 on each directions.
+There are two parts in this draft:</p>
+
+<h3 id="feature-with-laplacian-or-curvature-value">Feature with laplacian or curvature value</h3>
+
+<h4 id="training">training</h4>
+<p>we feed several $(F_i, R_i)$ pairs to network, and try to learn the regression function for the laplacian vector.</p>
+
+<h4 id="testing">testing</h4>
+<p>use $F_i$ as query and infer the learned regression function for target $R_i$ (result laplacian vector from ground truth).</p>
+
+<p>Here I focus on discussion of the <strong>feature vector</strong> ($F_i$) part, and the result vector ($R_i$) is still a laplacian vector from ground truth shape. 
+I try to come up some new thoughts for feature vectors, and I summarize some thoughts here (please see the figure below).
+We begin from the low-resolution shape image, and we have local raw representation (the red dots in the figure connected by the green arrows) in the figure: </p>
+
+<ul>
+  <li>laplacian vector feature : use local raw representation to compute local laplacian vector <script type="math/tex"> \mathcal{L}(e_i)</script>, resulted in a 18-dim vector.
+Please noted that the blue dots in the figure means zero vectors.</li>
+  <li>curvature value feature : local curvature measured by <script type="math/tex"> \| \mathcal{L}(e_i) \|_2</script>, results in a 9-dim vector.
+The 3 in the figure is just a example non-zero curvature number.</li>
+</ul>
+
+<p>The black arrows in the figure represent $R_i$ (ground truth laplacian vector).</p>
+
+<h3 id="mirror-feature">Mirror feature</h3>
+
+<p>For the example in the figure, I draw three different versions of them:</p>
+
+<ul>
+  <li>$M_y$: mirror of y-axis </li>
+  <li>$M_x$: mirror of x-axis</li>
+  <li>$M_x M_y$: mirror of y-axis and then x-axis</li>
+</ul>
+
+<p><img src="http://jdily.github.io/images/curvature_feature_mirror.png" alt="illustration" /></p>
+
+<h3 id="discussion">Discussion</h3>
+
+<h4 id="result-ambuiguity">result ambuiguity</h4>
+
+<p>Originally I am thinking if we can extract some real-value only and use them as feature, which is curvature value feature.
+However, if I insert the original feature (0 0 3 0 3 0 0 0 0) into database, and  then I want to also insert Mirror x version into database,
+it lead to an ambiguity.
+Both of them share the same feature vector (0 0 3 0 3 0 0 0 0), however, the desired result laplacian vectors are not in the same direction.
+So I think I will use the laplacian vector feature instead.</p>
+
+<h4 id="avoid-direction-inference">Avoid direction inference</h4>
+
+<p>Right now, we try to infer both the direction and the magnitude in both x and y direction of the laplacian vector.
+(So we may get (-0.2, 0.5), (0.2, -0.5), (-0.2, -0.5), (0.2, 0.5) so on…)
+I am  thinking about if we can reduce the burden of the inference, say, only ask it for magnitude of both x and y direction.
+And we decide the direction based on some local geometry, e.g. try to compute the normal at each sample location.</p>
+
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/30/Feature-Idea-Draft/">
+            Feature illustration
+            <small><time datetime="2015-10-30T00:00:00-07:00">30 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/21/Rotation-issue/">
+            Rotation issue
+            <small><time datetime="2015-10-21T00:00:00-07:00">21 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/16/Learning-Bias-Draft/">
+            Learning the bias term from data
+            <small><time datetime="2015-10-16T00:00:00-07:00">16 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+
+      <div class="footer">
+        <p>
+          &copy; 2015. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -36,6 +36,12 @@ $$
 
 And this is correspond to Zhaowen's manually extract some information.
 
+### Discussion about add four training set for each location..
+
+[![Thumbnail](http://CoSketch.com/SavedImages/pvaXBa2Y.thumb.png "Click to enlarge")](http://CoSketch.com/Saved/pvaXBa2Y)
+
+
+
 
 
 

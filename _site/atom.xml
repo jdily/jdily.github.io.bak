@@ -4,13 +4,75 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-10-30T11:30:41-07:00</updated>
+ <updated>2015-10-30T18:11:00-07:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Curvature, mirror feature discussion</title>
+   <link href="http://jdily.github.io/draft/2015/10/30/mirror_curvature_feature/"/>
+   <updated>2015-10-30T00:00:00-07:00</updated>
+   <id>http://jdily.github.io/draft/2015/10/30/mirror_curvature_feature</id>
+   <content type="html">&lt;p&gt;I try to draw some diagrams to describe my idea and combine the mirror idea that Nathan mentioned in the morning.
+The window size used in the figure below is 9, i.e. 4 on each directions.
+There are two parts in this draft:&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-with-laplacian-or-curvature-value&quot;&gt;Feature with laplacian or curvature value&lt;/h3&gt;
+
+&lt;h4 id=&quot;training&quot;&gt;training&lt;/h4&gt;
+&lt;p&gt;we feed several $(F_i, R_i)$ pairs to network, and try to learn the regression function for the laplacian vector.&lt;/p&gt;
+
+&lt;h4 id=&quot;testing&quot;&gt;testing&lt;/h4&gt;
+&lt;p&gt;use $F_i$ as query and infer the learned regression function for target $R_i$ (result laplacian vector from ground truth).&lt;/p&gt;
+
+&lt;p&gt;Here I focus on discussion of the &lt;strong&gt;feature vector&lt;/strong&gt; ($F_i$) part, and the result vector ($R_i$) is still a laplacian vector from ground truth shape. 
+I try to come up some new thoughts for feature vectors, and I summarize some thoughts here (please see the figure below).
+We begin from the low-resolution shape image, and we have local raw representation (the red dots in the figure connected by the green arrows) in the figure: &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;laplacian vector feature : use local raw representation to compute local laplacian vector &lt;script type=&quot;math/tex&quot;&gt; \mathcal{L}(e_i)&lt;/script&gt;, resulted in a 18-dim vector.
+Please noted that the blue dots in the figure means zero vectors.&lt;/li&gt;
+  &lt;li&gt;curvature value feature : local curvature measured by &lt;script type=&quot;math/tex&quot;&gt; \| \mathcal{L}(e_i) \|_2&lt;/script&gt;, results in a 9-dim vector.
+The 3 in the figure is just a example non-zero curvature number.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The black arrows in the figure represent $R_i$ (ground truth laplacian vector).&lt;/p&gt;
+
+&lt;h3 id=&quot;mirror-feature&quot;&gt;Mirror feature&lt;/h3&gt;
+
+&lt;p&gt;For the example in the figure, I draw three different versions of them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$M_y$: mirror of y-axis &lt;/li&gt;
+  &lt;li&gt;$M_x$: mirror of x-axis&lt;/li&gt;
+  &lt;li&gt;$M_x M_y$: mirror of y-axis and then x-axis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://jdily.github.io/images/curvature_feature_mirror.png&quot; alt=&quot;illustration&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;discussion&quot;&gt;Discussion&lt;/h3&gt;
+
+&lt;h4 id=&quot;result-ambuiguity&quot;&gt;result ambuiguity&lt;/h4&gt;
+
+&lt;p&gt;Originally I am thinking if we can extract some real-value only and use them as feature, which is curvature value feature.
+However, if I insert the original feature (0 0 3 0 3 0 0 0 0) into database, and  then I want to also insert Mirror x version into database,
+it lead to an ambiguity.
+Both of them share the same feature vector (0 0 3 0 3 0 0 0 0), however, the desired result laplacian vectors are not in the same direction.
+So I think I will use the laplacian vector feature instead.&lt;/p&gt;
+
+&lt;h4 id=&quot;avoid-direction-inference&quot;&gt;Avoid direction inference&lt;/h4&gt;
+
+&lt;p&gt;Right now, we try to infer both the direction and the magnitude in both x and y direction of the laplacian vector.
+(So we may get (-0.2, 0.5), (0.2, -0.5), (-0.2, -0.5), (0.2, 0.5) so on…)
+I am  thinking about if we can reduce the burden of the inference, say, only ask it for magnitude of both x and y direction.
+And we decide the direction based on some local geometry, e.g. try to compute the normal at each sample location.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Feature illustration</title>
@@ -50,6 +112,10 @@ So in this case, our feature vector &lt;script type=&quot;math/tex&quot;&gt;\til
 &lt;/script&gt;
 
 &lt;p&gt;And this is correspond to Zhaowen’s manually extract some information.&lt;/p&gt;
+
+&lt;h3 id=&quot;discussion-about-add-four-training-set-for-each-location&quot;&gt;Discussion about add four training set for each location..&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://CoSketch.com/Saved/pvaXBa2Y&quot;&gt;&lt;img src=&quot;http://CoSketch.com/SavedImages/pvaXBa2Y.thumb.png&quot; alt=&quot;Thumbnail&quot; title=&quot;Click to enlarge&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 </content>
  </entry>
