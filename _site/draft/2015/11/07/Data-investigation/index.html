@@ -74,9 +74,15 @@ You can find some comparison results in the following webpage (including numeric
 <a href="http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-mickey.html">http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-mickey.html</a>
 <a href="http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-flag.html">http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-flag.html</a></p>
 
-<p>There are some confusion about the shape shown in the webpage, they are results of nearest neighbours, if needed I can also show all the results using different methods.
-But the conclusion for the comparison is : <strong>there are no huge differences between all these methods</strong>.
-So I decided to do some investigation of our input data, especially the training data, with some visualization.</p>
+<p>There are some confusion about the shape shown in the webpage, they are results of nearest neighbours, if needed I can also show all the results using different methods.</p>
+
+<h4 id="thoughts">Thoughts</h4>
+
+<p>But the conclusion for the comparison is : <strong>there are no huge differences between all these methods</strong>.
+The good thing is I think our problem formulation, in the beginning, already help us to reach a good point (the zero predict in the previous results show that even without inferred laplacian value, we can already get a fairly good overall shape.)
+What we want to achieve is to infer good local structures (geometry feature) that captured in the data.</p>
+
+<p>So I decided to do some investigation of our input data, especially the training data, with some visualization.</p>
 
 <h3 id="data-distribution---output-laplacian-value">Data distribution - output laplacian value</h3>
 

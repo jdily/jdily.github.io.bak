@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-07T12:09:31-08:00</updated>
+ <updated>2015-11-07T12:13:06-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -24,9 +24,15 @@ You can find some comparison results in the following webpage (including numeric
 &lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-mickey.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-mickey.html&lt;/a&gt;
 &lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-flag.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-flag.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;There are some confusion about the shape shown in the webpage, they are results of nearest neighbours, if needed I can also show all the results using different methods.
-But the conclusion for the comparison is : &lt;strong&gt;there are no huge differences between all these methods&lt;/strong&gt;.
-So I decided to do some investigation of our input data, especially the training data, with some visualization.&lt;/p&gt;
+&lt;p&gt;There are some confusion about the shape shown in the webpage, they are results of nearest neighbours, if needed I can also show all the results using different methods.&lt;/p&gt;
+
+&lt;h4 id=&quot;thoughts&quot;&gt;Thoughts&lt;/h4&gt;
+
+&lt;p&gt;But the conclusion for the comparison is : &lt;strong&gt;there are no huge differences between all these methods&lt;/strong&gt;.
+The good thing is I think our problem formulation, in the beginning, already help us to reach a good point (the zero predict in the previous results show that even without inferred laplacian value, we can already get a fairly good overall shape.)
+What we want to achieve is to infer good local structures (geometry feature) that captured in the data.&lt;/p&gt;
+
+&lt;p&gt;So I decided to do some investigation of our input data, especially the training data, with some visualization.&lt;/p&gt;
 
 &lt;h3 id=&quot;data-distribution---output-laplacian-value&quot;&gt;Data distribution - output laplacian value&lt;/h3&gt;
 

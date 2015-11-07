@@ -12,7 +12,13 @@ You can find some comparison results in the following webpage (including numeric
 <http://www.cs.ubc.ca/~ichaos/research/nbview/exp4-val-linear-flag.html>
 
 There are some confusion about the shape shown in the webpage, they are results of nearest neighbours, if needed I can also show all the results using different methods.
+
+#### Thoughts
+
 But the conclusion for the comparison is : **there are no huge differences between all these methods**.
+The good thing is I think our problem formulation, in the beginning, already help us to reach a good point (the zero predict in the previous results show that even without inferred laplacian value, we can already get a fairly good overall shape.)
+What we want to achieve is to infer good local structures (geometry feature) that captured in the data.
+
 So I decided to do some investigation of our input data, especially the training data, with some visualization.
 
 ### Data distribution - output laplacian value
