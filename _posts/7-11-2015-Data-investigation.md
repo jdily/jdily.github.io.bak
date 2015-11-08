@@ -30,12 +30,17 @@ Figure on the left hand side (green bars) is the distribution of **x-component**
 According to the figures, I found out that most of our output values are very close to 0.
 And there are very few laplacians are with bigger scale, but I think those bigger laplacians are the thing that we care about (because they represent the local feature.).
 
-### Prediction value distribution
+### Prediction value distribution - Test case (sound)
 Next thing I did is I plot the distribution of both x- and y-components of output laplacian values in 2D (see the following fig).
 (x-axis is for x-components, and y-axis is for y-components).
 ![output value distribution]({{ site.url }}/images/output_val_plot.png)
 The blue dots are the ground truth points, the green dots are the predicted results using linear regression, and the red dots are predicted results using network.
 As you can see, most of the predictions from both methods gather up close to the center (which is (0, 0) ), and fail to capture the bigger laplacians on the outside.
+
+#### Supplemental figure : Training value distribution
+![output value distribution - training]({{ site.url }}/images/output_val_plot_train.png)
+This new figure illustrate the training set fitting.
+
 
 ### Feature attributes and Predict value
 I haven't have a very concrete idea of how to show this, but I also plotted something out, so I think it still ok to show it.

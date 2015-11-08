@@ -93,12 +93,16 @@ Figure on the left hand side (green bars) is the distribution of <strong>x-compo
 According to the figures, I found out that most of our output values are very close to 0.
 And there are very few laplacians are with bigger scale, but I think those bigger laplacians are the thing that we care about (because they represent the local feature.).</p>
 
-<h3 id="prediction-value-distribution">Prediction value distribution</h3>
+<h3 id="prediction-value-distribution---test-case-sound">Prediction value distribution - Test case (sound)</h3>
 <p>Next thing I did is I plot the distribution of both x- and y-components of output laplacian values in 2D (see the following fig).
 (x-axis is for x-components, and y-axis is for y-components).
 <img src="http://jdily.github.io/images/output_val_plot.png" alt="output value distribution" />
 The blue dots are the ground truth points, the green dots are the predicted results using linear regression, and the red dots are predicted results using network.
 As you can see, most of the predictions from both methods gather up close to the center (which is (0, 0) ), and fail to capture the bigger laplacians on the outside.</p>
+
+<h4 id="supplemental-figure--training-value-distribution">Supplemental figure : Training value distribution</h4>
+<p><img src="http://jdily.github.io/images/output_val_plot_train.png" alt="output value distribution - training" />
+This new figure illustrate the training set fitting.</p>
 
 <h3 id="feature-attributes-and-predict-value">Feature attributes and Predict value</h3>
 <p>I haven’t have a very concrete idea of how to show this, but I also plotted something out, so I think it still ok to show it.

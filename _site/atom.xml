@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-07T12:13:06-08:00</updated>
+ <updated>2015-11-07T16:16:01-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -43,12 +43,16 @@ Figure on the left hand side (green bars) is the distribution of &lt;strong&gt;x
 According to the figures, I found out that most of our output values are very close to 0.
 And there are very few laplacians are with bigger scale, but I think those bigger laplacians are the thing that we care about (because they represent the local feature.).&lt;/p&gt;
 
-&lt;h3 id=&quot;prediction-value-distribution&quot;&gt;Prediction value distribution&lt;/h3&gt;
+&lt;h3 id=&quot;prediction-value-distribution---test-case-sound&quot;&gt;Prediction value distribution - Test case (sound)&lt;/h3&gt;
 &lt;p&gt;Next thing I did is I plot the distribution of both x- and y-components of output laplacian values in 2D (see the following fig).
 (x-axis is for x-components, and y-axis is for y-components).
 &lt;img src=&quot;http://jdily.github.io/images/output_val_plot.png&quot; alt=&quot;output value distribution&quot; /&gt;
 The blue dots are the ground truth points, the green dots are the predicted results using linear regression, and the red dots are predicted results using network.
 As you can see, most of the predictions from both methods gather up close to the center (which is (0, 0) ), and fail to capture the bigger laplacians on the outside.&lt;/p&gt;
+
+&lt;h4 id=&quot;supplemental-figure--training-value-distribution&quot;&gt;Supplemental figure : Training value distribution&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;http://jdily.github.io/images/output_val_plot_train.png&quot; alt=&quot;output value distribution - training&quot; /&gt;
+This new figure illustrate the training set fitting.&lt;/p&gt;
 
 &lt;h3 id=&quot;feature-attributes-and-predict-value&quot;&gt;Feature attributes and Predict value&lt;/h3&gt;
 &lt;p&gt;I haven’t have a very concrete idea of how to show this, but I also plotted something out, so I think it still ok to show it.
@@ -115,7 +119,7 @@ The 3 in the figure is just a example non-zero curvature number.&lt;/li&gt;
 However, if I insert the original feature (0 0 3 0 3 0 0 0 0) into database, and  then I want to also insert Mirror x version into database,
 it lead to an ambiguity.
 Both of them share the same feature vector (0 0 3 0 3 0 0 0 0), however, the desired result laplacian vectors are not in the same direction.
-So I think I will use the laplacian vector feature instead.&lt;/p&gt;
+So I think I will use the &lt;strong&gt;laplacian vector feature&lt;/strong&gt; instead.&lt;/p&gt;
 
 &lt;h4 id=&quot;avoid-direction-inference&quot;&gt;Avoid direction inference&lt;/h4&gt;
 
