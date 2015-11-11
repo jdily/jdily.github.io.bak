@@ -73,10 +73,16 @@
 
 <p>where <script type="math/tex">L(e_i)</script> is the local laplacian, and <script type="math/tex">C(e_i)</script> is bilaplacian.</p>
 
-<h3 id="training-set">Training set</h3>
+<h3 id="goal-describe">Goal describe:</h3>
 
-<p>with ground truth shape, we know all the <script type="math/tex">e_i</script>, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
-With constraints like <script type="math/tex">\sum_{i}w_i^L= n</script>, and <script type="math/tex">\sum_{i}w_i^C = n</script> (n is the number of total sample in the shape, it can be also normalized as 1.).</p>
+<h4 id="training">Training</h4>
+<p>With ground truth shape in hand, we know all the <script type="math/tex">e_i</script> so we know all the <script type="math/tex">L(e_i)</script> and <script type="math/tex">C(e_i)</script>, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
+With constraints like <script type="math/tex">\sum_{i}w_i^L= n</script>, and <script type="math/tex">\sum_{i}w_i^C = n</script> (n is the number of total sample in the shape, it can be also normalized as 1.).
+And our dataset will consist of pairs of local shape pattern (low resolution feature) with <script type="math/tex">w_i^L</script> and <script type="math/tex">w_i^C</script>.</p>
+
+<h4 id="reconstructing">Reconstructing</h4>
+<p>For reconstruct, using each local pattern, we infer the corresponding <script type="math/tex">w_i^L</script> and <script type="math/tex">w_i^C</script> through the learning method.
+And we use these <script type="math/tex">w_i^L</script> and <script type="math/tex">w_i^C</script> to complete the formulation and solve for <script type="math/tex">e_i</script>.</p>
 
 <h4 id="problem1--linear-programming-regularize">Problem1 : linear programming regularize?</h4>
 <p>When solving this linear programming, it will leads to a very big value assign to the smallest laplacian value sample and to the smallest bilaplacian value sample.

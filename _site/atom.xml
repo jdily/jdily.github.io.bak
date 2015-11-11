@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-10T21:49:43-08:00</updated>
+ <updated>2015-11-10T21:58:27-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -23,10 +23,16 @@
 
 &lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;L(e_i)&lt;/script&gt; is the local laplacian, and &lt;script type=&quot;math/tex&quot;&gt;C(e_i)&lt;/script&gt; is bilaplacian.&lt;/p&gt;
 
-&lt;h3 id=&quot;training-set&quot;&gt;Training set&lt;/h3&gt;
+&lt;h3 id=&quot;goal-describe&quot;&gt;Goal describe:&lt;/h3&gt;
 
-&lt;p&gt;with ground truth shape, we know all the &lt;script type=&quot;math/tex&quot;&gt;e_i&lt;/script&gt;, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
-With constraints like &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^L= n&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^C = n&lt;/script&gt; (n is the number of total sample in the shape, it can be also normalized as 1.).&lt;/p&gt;
+&lt;h4 id=&quot;training&quot;&gt;Training&lt;/h4&gt;
+&lt;p&gt;With ground truth shape in hand, we know all the &lt;script type=&quot;math/tex&quot;&gt;e_i&lt;/script&gt; so we know all the &lt;script type=&quot;math/tex&quot;&gt;L(e_i)&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;C(e_i)&lt;/script&gt;, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
+With constraints like &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^L= n&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^C = n&lt;/script&gt; (n is the number of total sample in the shape, it can be also normalized as 1.).
+And our dataset will consist of pairs of local shape pattern (low resolution feature) with &lt;script type=&quot;math/tex&quot;&gt;w_i^L&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;w_i^C&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;reconstructing&quot;&gt;Reconstructing&lt;/h4&gt;
+&lt;p&gt;For reconstruct, using each local pattern, we infer the corresponding &lt;script type=&quot;math/tex&quot;&gt;w_i^L&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;w_i^C&lt;/script&gt; through the learning method.
+And we use these &lt;script type=&quot;math/tex&quot;&gt;w_i^L&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;w_i^C&lt;/script&gt; to complete the formulation and solve for &lt;script type=&quot;math/tex&quot;&gt;e_i&lt;/script&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;problem1--linear-programming-regularize&quot;&gt;Problem1 : linear programming regularize?&lt;/h4&gt;
 &lt;p&gt;When solving this linear programming, it will leads to a very big value assign to the smallest laplacian value sample and to the smallest bilaplacian value sample.

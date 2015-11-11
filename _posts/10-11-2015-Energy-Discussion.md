@@ -10,10 +10,16 @@ $$ E_{total} = \sum_{e_i} w_i^L (L(e_i))^2 + \sum_{e_i} w_i^C (C(e_i))^2$$,
 
 where $$L(e_i)$$ is the local laplacian, and $$C(e_i)$$ is bilaplacian.
 
-### Training set
+### Goal describe: 
 
-with ground truth shape, we know all the $$e_i$$, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
+#### Training 
+With ground truth shape in hand, we know all the $$e_i$$ so we know all the $$L(e_i)$$ and $$C(e_i)$$, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
 With constraints like $$\sum_{i}w_i^L= n$$, and $$\sum_{i}w_i^C = n$$ (n is the number of total sample in the shape, it can be also normalized as 1.).
+And our dataset will consist of pairs of local shape pattern (low resolution feature) with $$w_i^L$$ and $$w_i^C$$.
+
+#### Reconstructing
+For reconstruct, using each local pattern, we infer the corresponding $$w_i^L$$ and $$w_i^C$$ through the learning method.
+And we use these $$w_i^L$$ and $$w_i^C$$ to complete the formulation and solve for $$e_i$$.
 
 #### Problem1 : linear programming regularize?
 When solving this linear programming, it will leads to a very big value assign to the smallest laplacian value sample and to the smallest bilaplacian value sample.
