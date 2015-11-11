@@ -4,13 +4,44 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-07T16:16:01-08:00</updated>
+ <updated>2015-11-10T21:49:43-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Energy discussion</title>
+   <link href="http://jdily.github.io/draft/2015/11/10/Energy-Discussion/"/>
+   <updated>2015-11-10T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/draft/2015/11/10/Energy-Discussion</id>
+   <content type="html">&lt;h2 id=&quot;optimization-function-with-two-terms-and-spatial-varying-weights&quot;&gt;Optimization function with two terms and spatial-varying weights&lt;/h2&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt; E_{total} = \sum_{e_i} w_i^L (L(e_i))^2 + \sum_{e_i} w_i^C (C(e_i))^2&lt;/script&gt;,&lt;/p&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;L(e_i)&lt;/script&gt; is the local laplacian, and &lt;script type=&quot;math/tex&quot;&gt;C(e_i)&lt;/script&gt; is bilaplacian.&lt;/p&gt;
+
+&lt;h3 id=&quot;training-set&quot;&gt;Training set&lt;/h3&gt;
+
+&lt;p&gt;with ground truth shape, we know all the &lt;script type=&quot;math/tex&quot;&gt;e_i&lt;/script&gt;, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
+With constraints like &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^L= n&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^C = n&lt;/script&gt; (n is the number of total sample in the shape, it can be also normalized as 1.).&lt;/p&gt;
+
+&lt;h4 id=&quot;problem1--linear-programming-regularize&quot;&gt;Problem1 : linear programming regularize?&lt;/h4&gt;
+&lt;p&gt;When solving this linear programming, it will leads to a very big value assign to the smallest laplacian value sample and to the smallest bilaplacian value sample.
+So for example, with a circle shape with 180 samples, the output of w_i^L will be a vector with all 0 but only 1 180 which assigned to the smallest laplacian e_i.
+And on the other hand, the output of w_i^C will be a vector with all 0 but only 1 180 which assigned to the smallest bilaplacian e_i.&lt;/p&gt;
+
+&lt;h4 id=&quot;problem-2--relative-weight-value-meaning&quot;&gt;Problem 2 : relative weight value meaning..&lt;/h4&gt;
+&lt;p&gt;When solving the linear programming, we set some constraints like &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^L= n&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;\sum_{i}w_i^C = n&lt;/script&gt; (n is the number of total sample in the shape, it can be also normalized as 1.).
+I think the spatial-varying weighting here represents, for each term, it’s strongeness is different from sample to sample, so it’s a relative value.
+However, this relative value, may not be able to use across different shapes.&lt;/p&gt;
+
+&lt;p&gt;For example, I have a circle with 180 samples, and another shape, with 100 samples.
+Even though there is a same local pattern happens in both shape, and their weight value are both 10, but the absolute value 10 means different in both shapes.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Data investigation</title>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Energy discussion &middot; Smooth Voxel Modeling
+    
+  </title>
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css"> -->
+  <link rel="stylesheet" href="http://jdily.github.io/styles.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
+</head>
+
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+  <body>
+
+    <div class="container content">
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/problem" title="Home">Smooth Voxel Modeling</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/problem">Problem</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/progress">Progress</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/meeting">Meeting Note</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/draft">Draft</a></small>
+          
+
+        </h3>
+      </div>
+
+      <article class="post">
+  <h1 class="post-title">Energy discussion</h1>
+  <time datetime="2015-11-10T00:00:00-08:00" class="post-date">10 Nov 2015</time>
+  <h2 id="optimization-function-with-two-terms-and-spatial-varying-weights">Optimization function with two terms and spatial-varying weights</h2>
+
+<p><script type="math/tex"> E_{total} = \sum_{e_i} w_i^L (L(e_i))^2 + \sum_{e_i} w_i^C (C(e_i))^2</script>,</p>
+
+<p>where <script type="math/tex">L(e_i)</script> is the local laplacian, and <script type="math/tex">C(e_i)</script> is bilaplacian.</p>
+
+<h3 id="training-set">Training set</h3>
+
+<p>with ground truth shape, we know all the <script type="math/tex">e_i</script>, so we can formulate a linear programming with unknown $w_i^L$ and $w_i^C$.
+With constraints like <script type="math/tex">\sum_{i}w_i^L= n</script>, and <script type="math/tex">\sum_{i}w_i^C = n</script> (n is the number of total sample in the shape, it can be also normalized as 1.).</p>
+
+<h4 id="problem1--linear-programming-regularize">Problem1 : linear programming regularize?</h4>
+<p>When solving this linear programming, it will leads to a very big value assign to the smallest laplacian value sample and to the smallest bilaplacian value sample.
+So for example, with a circle shape with 180 samples, the output of w_i^L will be a vector with all 0 but only 1 180 which assigned to the smallest laplacian e_i.
+And on the other hand, the output of w_i^C will be a vector with all 0 but only 1 180 which assigned to the smallest bilaplacian e_i.</p>
+
+<h4 id="problem-2--relative-weight-value-meaning">Problem 2 : relative weight value meaning..</h4>
+<p>When solving the linear programming, we set some constraints like <script type="math/tex">\sum_{i}w_i^L= n</script>, and <script type="math/tex">\sum_{i}w_i^C = n</script> (n is the number of total sample in the shape, it can be also normalized as 1.).
+I think the spatial-varying weighting here represents, for each term, it’s strongeness is different from sample to sample, so it’s a relative value.
+However, this relative value, may not be able to use across different shapes.</p>
+
+<p>For example, I have a circle with 180 samples, and another shape, with 100 samples.
+Even though there is a same local pattern happens in both shape, and their weight value are both 10, but the absolute value 10 means different in both shapes.</p>
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/11/07/Data-investigation/">
+            Data investigation
+            <small><time datetime="2015-11-07T00:00:00-08:00">07 Nov 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/30/mirror_curvature_feature/">
+            Curvature, mirror feature discussion
+            <small><time datetime="2015-10-30T00:00:00-07:00">30 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/10/30/Feature-Idea-Draft/">
+            Feature illustration
+            <small><time datetime="2015-10-30T00:00:00-07:00">30 Oct 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+
+      <div class="footer">
+        <p>
+          &copy; 2015. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
