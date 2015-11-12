@@ -66,28 +66,40 @@
 
       <article class="post">
   <h1 class="post-title">Linear System</h1>
-  <time datetime="2015-10-15T00:00:00-07:00" class="post-date">15 Oct 2015</time>
-  <h2 id="detail-of-the-linear-system">Detail of the linear system</h2>
+  <time datetime="2015-11-12T00:00:00-08:00" class="post-date">12 Nov 2015</time>
+  <h2 id="the-linear-system">The linear system</h2>
+<p>If we only look at the third term (laplacian positioning term) : <script type="math/tex"> ( L(e_i) -d_i )^2  </script>, I think we got </p>
 
-<p>For each $e_i$, we have </p>
-
-<script type="math/tex; mode=display">e_i - w_{p}e_{p} - w_{n}e_{n} = b_i </script>
+<script type="math/tex; mode=display">e_i - 0.5 e_{p} - 0.5 e_{n} - d_i = 0 </script>
 
 <p>where $p = i-1$ and $n = i+1$.</p>
 
 <p>So far, I formulate the optimization in terms of $t_i$, so the previous equation can be transformed into:</p>
 
 <script type="math/tex; mode=display"> 
-P_{i0}\cdot (1-t_i)+P_{i1} \cdot t_i - w_{p}\cdot (P_{p0}\cdot (1-t_p)+P_{p1}\cdot t_p) - w_{n}\cdot (P_{n0}\cdot (1-t_n)+P_{n1}\cdot t_n) 
-= b_i
+P_{i0}\cdot (1-t_i)+P_{i1} \cdot t_i - 0.5 \cdot (P_{p0}\cdot (1-t_p)+P_{p1}\cdot t_p) - 0.5 \cdot (P_{n0}\cdot (1-t_n)+P_{n1}\cdot t_n) 
+= d_i
 </script>
 
 <script type="math/tex; mode=display">
-t_i \cdot (P_{i1} - P_{i0}) - t_p \cdot w_p \cdot (P_{p1}-P_{p0}) -  t_n \cdot w_n \cdot (P_{n1}-P_{n0}) =  b_i - P_{i0} + w_p\cdot P_{p0} + w_n\cdot P_{n0}
+t_i \cdot (P_{i1} - P_{i0}) - t_p \cdot 0.5 \cdot (P_{p1}-P_{p0}) -  t_n \cdot 0.5 \cdot (P_{n1}-P_{n0}) =  d_i - P_{i0} + 0.5\cdot P_{p0} + 0.5\cdot P_{n0}
 </script>
 
-<p>and all the $P_{xx}$ and $b_i$ are 2D vectors in current 2D setting.
-It means we have two equations for each $t_i$, and i think it leads to an over-determined system.
+<p>and all the $P_{xx}$ and $d_i$ are 2D vectors in current 2D setting.
+It means we have two equations for each $i$, i.e. </p>
+
+<p><script type="math/tex">
+t_i \cdot (P_{i1}.x - P_{i0}.x) - t_p \cdot 0.5 \cdot (P_{p1}.x-P_{p0}.x) -  t_n \cdot 0.5 \cdot (P_{n1}.x-P_{n0}.x) =  \\
+d_i .x- P_{i0}.x + 0.5\cdot P_{p0}.x + 0.5\cdot P_{n0}.x
+</script>
+and </p>
+
+<script type="math/tex; mode=display">
+t_i \cdot (P_{i1}.y - P_{i0}.y) - t_p \cdot 0.5 \cdot (P_{p1}.y-P_{p0}.y) -  t_n \cdot 0.5 \cdot (P_{n1}.y-P_{n0}.y) =  \\
+d_i .y- P_{i0}.y + 0.5\cdot P_{p0}.y + 0.5\cdot P_{n0}.y
+</script>
+
+<p>and i think it leads to an over-determined system.
 So if we have $n$ unknowns (i.e. <script type="math/tex">t_0... t_{n-1}</script>), then we will get a <script type="math/tex">2n\times n</script> matrix $A$ before add any positional constraints (boundary condition.)</p>
 
 </article>

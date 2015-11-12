@@ -4,13 +4,55 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-10T21:58:27-08:00</updated>
+ <updated>2015-11-12T08:26:53-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Linear System</title>
+   <link href="http://jdily.github.io/draft/2015/11/12/Linear-System/"/>
+   <updated>2015-11-12T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/draft/2015/11/12/Linear-System</id>
+   <content type="html">&lt;h2 id=&quot;the-linear-system&quot;&gt;The linear system&lt;/h2&gt;
+&lt;p&gt;If we only look at the third term (laplacian positioning term) : &lt;script type=&quot;math/tex&quot;&gt; ( L(e_i) -d_i )^2  &lt;/script&gt;, I think we got &lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;e_i - 0.5 e_{p} - 0.5 e_{n} - d_i = 0 &lt;/script&gt;
+
+&lt;p&gt;where $p = i-1$ and $n = i+1$.&lt;/p&gt;
+
+&lt;p&gt;So far, I formulate the optimization in terms of $t_i$, so the previous equation can be transformed into:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; 
+P_{i0}\cdot (1-t_i)+P_{i1} \cdot t_i - 0.5 \cdot (P_{p0}\cdot (1-t_p)+P_{p1}\cdot t_p) - 0.5 \cdot (P_{n0}\cdot (1-t_n)+P_{n1}\cdot t_n) 
+= d_i
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+t_i \cdot (P_{i1} - P_{i0}) - t_p \cdot 0.5 \cdot (P_{p1}-P_{p0}) -  t_n \cdot 0.5 \cdot (P_{n1}-P_{n0}) =  d_i - P_{i0} + 0.5\cdot P_{p0} + 0.5\cdot P_{n0}
+&lt;/script&gt;
+
+&lt;p&gt;and all the $P_{xx}$ and $d_i$ are 2D vectors in current 2D setting.
+It means we have two equations for each $i$, i.e. &lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;
+t_i \cdot (P_{i1}.x - P_{i0}.x) - t_p \cdot 0.5 \cdot (P_{p1}.x-P_{p0}.x) -  t_n \cdot 0.5 \cdot (P_{n1}.x-P_{n0}.x) =  \\
+d_i .x- P_{i0}.x + 0.5\cdot P_{p0}.x + 0.5\cdot P_{n0}.x
+&lt;/script&gt;
+and &lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+t_i \cdot (P_{i1}.y - P_{i0}.y) - t_p \cdot 0.5 \cdot (P_{p1}.y-P_{p0}.y) -  t_n \cdot 0.5 \cdot (P_{n1}.y-P_{n0}.y) =  \\
+d_i .y- P_{i0}.y + 0.5\cdot P_{p0}.y + 0.5\cdot P_{n0}.y
+&lt;/script&gt;
+
+&lt;p&gt;and i think it leads to an over-determined system.
+So if we have $n$ unknowns (i.e. &lt;script type=&quot;math/tex&quot;&gt;t_0... t_{n-1}&lt;/script&gt;), then we will get a &lt;script type=&quot;math/tex&quot;&gt;2n\times n&lt;/script&gt; matrix $A$ before add any positional constraints (boundary condition.)&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Energy discussion</title>
@@ -417,36 +459,6 @@ I put some initial results at &lt;/p&gt;
   &lt;li&gt;learn all those values (3 values in 2D, including 2-dim laplacian vector, and one scalar weight ($w_p+w_n=1.0$) ).&lt;/li&gt;
   &lt;li&gt;only learn laplacian vector, and use alternative optimization to optimize $w_p$ and $w_n$.	&lt;/li&gt;
 &lt;/ol&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Linear System</title>
-   <link href="http://jdily.github.io/draft/2015/10/15/Linear-System/"/>
-   <updated>2015-10-15T00:00:00-07:00</updated>
-   <id>http://jdily.github.io/draft/2015/10/15/Linear-System</id>
-   <content type="html">&lt;h2 id=&quot;detail-of-the-linear-system&quot;&gt;Detail of the linear system&lt;/h2&gt;
-
-&lt;p&gt;For each $e_i$, we have &lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;e_i - w_{p}e_{p} - w_{n}e_{n} = b_i &lt;/script&gt;
-
-&lt;p&gt;where $p = i-1$ and $n = i+1$.&lt;/p&gt;
-
-&lt;p&gt;So far, I formulate the optimization in terms of $t_i$, so the previous equation can be transformed into:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt; 
-P_{i0}\cdot (1-t_i)+P_{i1} \cdot t_i - w_{p}\cdot (P_{p0}\cdot (1-t_p)+P_{p1}\cdot t_p) - w_{n}\cdot (P_{n0}\cdot (1-t_n)+P_{n1}\cdot t_n) 
-= b_i
-&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-t_i \cdot (P_{i1} - P_{i0}) - t_p \cdot w_p \cdot (P_{p1}-P_{p0}) -  t_n \cdot w_n \cdot (P_{n1}-P_{n0}) =  b_i - P_{i0} + w_p\cdot P_{p0} + w_n\cdot P_{n0}
-&lt;/script&gt;
-
-&lt;p&gt;and all the $P_{xx}$ and $b_i$ are 2D vectors in current 2D setting.
-It means we have two equations for each $t_i$, and i think it leads to an over-determined system.
-So if we have $n$ unknowns (i.e. &lt;script type=&quot;math/tex&quot;&gt;t_0... t_{n-1}&lt;/script&gt;), then we will get a &lt;script type=&quot;math/tex&quot;&gt;2n\times n&lt;/script&gt; matrix $A$ before add any positional constraints (boundary condition.)&lt;/p&gt;
 </content>
  </entry>
  
