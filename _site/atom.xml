@@ -4,13 +4,56 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-12T08:26:53-08:00</updated>
+ <updated>2015-11-14T16:44:09-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>New energy and some results</title>
+   <link href="http://jdily.github.io/progress/2015/11/14/New-energy-formulation-result/"/>
+   <updated>2015-11-14T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/progress/2015/11/14/New-energy-formulation-result</id>
+   <content type="html">&lt;h2 id=&quot;new-optimization-function-with-four-terms&quot;&gt;New Optimization function with four terms&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; F(\mathbf{t}, \sigma_B, \sigma_L, C) = \sum_{i} w_i^L \cdot (L(e_i) )^2 + \sum_{i} w_i^B\cdot(B(e_i))^2 \\
+     + \sum_{i} w^D_i \cdot (L(e_i) -d_i)^2 + \sum_{i} w_P \cdot (t_i-0.5)^2 &lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\mathbf{t} = &lt;t_0, t_1, ... , t_{n-1} &gt;  %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;e_i = t_i\cdot P_{i0}+(1-t_i) \cdot P_{i1}&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt; w_i^L = e^{-(\frac{\|d_i\|}{\sigma_L})^2}, w_i^B = e^{-(\frac{\|b_i\|}{\sigma_B})^2}, w_i^D = C\cdot(2.0-w_i^L-w_i^B). w_P = 0.001&lt;/script&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;The following results show different strategies of computing laplacian.
+In general, the laplacian vector &lt;script type=&quot;math/tex&quot;&gt;L(e_i) &lt;/script&gt; is computed as &lt;script type=&quot;math/tex&quot;&gt; L(e_i) = e_i - a \cdot e_{i-1} + (1-a) \cdot e_{i+1}&lt;/script&gt;.
+The constant results in the following pages use &lt;script type=&quot;math/tex&quot;&gt; a = 0.5 &lt;/script&gt; across all iterations.
+The update results in the following pages update &lt;script type=&quot;math/tex&quot;&gt; a &lt;/script&gt; for every iteration using the update mesh.
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/circle109-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/circle109-a-comp.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/rect1-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/rect1-a-comp.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/rect3-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/rect3-a-comp.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/rect4-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/rect4-a-comp.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/flag-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/flag-a-comp.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-a-comp.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For different shapes, we should apply different &lt;script type=&quot;math/tex&quot;&gt;sigma_L, sigma_B, and C&lt;/script&gt;.
+I listed some experiment in the following pages.
+For each case, I tested different sets of parameters after 1, 2, 10 iterations.
+As we can find out, for shapes with sharp corner like rect, the sigma should be small enough that don’t smooth out the structure.
+Noted that the &lt;script type=&quot;math/tex&quot;&gt;w_D^i = c \cdot (2.0-w_L^i-w_B^i) &lt;/script&gt;, which is compliment to the other two weights.
+For the smooth shape, we then have to enlarge the sigma for better smoothing results.
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/circle109-grid-tuning.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/circle109-grid-tuning.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/rect1-grid-tuning.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/rect1-grid-tuning.html&lt;/a&gt;
+&lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-grid-tuning.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-grid-tuning.html&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Linear System</title>
