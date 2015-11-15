@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-14T16:44:09-08:00</updated>
+ <updated>2015-11-14T16:46:24-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -42,7 +42,7 @@ The update results in the following pages update &lt;script type=&quot;math/tex&
 &lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/flag-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/flag-a-comp.html&lt;/a&gt;
 &lt;a href=&quot;http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-a-comp.html&quot;&gt;http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-a-comp.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;For different shapes, we should apply different &lt;script type=&quot;math/tex&quot;&gt;sigma_L, sigma_B, and C&lt;/script&gt;.
+&lt;p&gt;For different shapes, we should apply different  &lt;script type=&quot;math/tex&quot;&gt;\sigma_L, \sigma_B&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;.
 I listed some experiment in the following pages.
 For each case, I tested different sets of parameters after 1, 2, 10 iterations.
 As we can find out, for shapes with sharp corner like rect, the sigma should be small enough that don’t smooth out the structure.

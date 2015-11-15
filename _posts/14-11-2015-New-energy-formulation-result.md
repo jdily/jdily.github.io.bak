@@ -28,7 +28,7 @@ The update results in the following pages update $$ a $$ for every iteration usi
 <http://www.cs.ubc.ca/~ichaos/research/nbview/flag-a-comp.html>
 <http://www.cs.ubc.ca/~ichaos/research/nbview/pacman-a-comp.html>
 
-For different shapes, we should apply different $$sigma_L, sigma_B, and C$$.
+For different shapes, we should apply different  $$\sigma_L, \sigma_B$$, and $$C$$.
 I listed some experiment in the following pages.
 For each case, I tested different sets of parameters after 1, 2, 10 iterations.
 As we can find out, for shapes with sharp corner like rect, the sigma should be small enough that don't smooth out the structure.
