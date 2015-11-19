@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Nov 18, 2015 Meeting note &middot; Smooth Voxel Modeling
+    
+  </title>
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css"> -->
+  <link rel="stylesheet" href="http://jdily.github.io/styles.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
+</head>
+
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+  <body>
+
+    <div class="container content">
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/problem" title="Home">Smooth Voxel Modeling</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/problem">Problem</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/progress">Progress</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/meeting">Meeting Note</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/draft">Draft</a></small>
+          
+
+        </h3>
+      </div>
+
+      <article class="post">
+  <h1 class="post-title">Nov 18, 2015 Meeting note</h1>
+  <time datetime="2015-11-18T00:00:00-08:00" class="post-date">18 Nov 2015</time>
+  <h2 id="notes">Notes</h2>
+<ul>
+  <li>There are mainly two parts in today’s discussion:
+    <ul>
+      <li>parameter learning for single shape.</li>
+      <li>parameter learning for multiple shape.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="for-single-shape">For single shape</h3>
+<ul>
+  <li>check the parameter learning optimization on some other example shapes.</li>
+  <li>compare the learned parameter with manually set parameter after several iterations..
+    <ul>
+      <li>This is to prove that the parameter learning is useful that we can get results more similar to ground truth shape.</li>
+    </ul>
+  </li>
+  <li>check whether we should keep doing parameter learning iteration by iteration. To check this, we can compare:
+    <ul>
+      <li>multiple iterations of reconstructions with fixed parameters learned from single iteration parameter learning.</li>
+      <li>multiple iterations of reconstructions with updated parameters.</li>
+    </ul>
+  </li>
+  <li>We also have to check whether the convergence of both reconstruction optimization (i.e. optimize t), and parameter learning optimization (i.e. optimize $\sigma_L$, $\sigma_B$, and $C$)</li>
+</ul>
+
+<h3 id="for-multiple-shape">For multiple shape</h3>
+<p>Assume for each shape, we get corresponding parameters  ($\sigma_L$, $\sigma_B$, and $C$), or parameter sets (multiple $\sigma_L$, $\sigma_B$, and $C$ across different iteration.), how we combine these information, and for a new shape, we can come up new parameters for it?</p>
+
+<h4 id="learning-approaches">Learning approaches</h4>
+<p>We can utilize multi-class classification algorithm like linear classification or SVM, classify some template shape we have, with their corresponding parameters. 
+And for each new shape, we can predict the possibilities of them being different classes, and use that as confident to weighted average the parameters.</p>
+
+<h4 id="feature-space">Feature space</h4>
+<p>For learning parameters across different shapes, we need to find the right parameter spaces for <strong>global</strong> or <strong>local</strong> structure.
+One possible direction is to extract the histogram of curvature, or the laplacian vectors.</p>
+
+<h2 id="todo">TODO</h2>
+<ol>
+  <li>run the parameter learning only 1 iteration for different shapes, and see the behaviour.</li>
+  <li>do the parameter learning for multiple iterations, and compare the reconstruct result with 
+    <ul>
+      <li>fix parameter (only one iteration parameter learning) and </li>
+      <li>manually set parameter.</li>
+    </ul>
+  </li>
+  <li>after getting the above steps, I can  start to work on learning from multiple shapes, both training and testing step…</li>
+</ol>
+
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/progress/2015/11/14/New-energy-formulation-result/">
+            New energy and some results
+            <small><time datetime="2015-11-14T00:00:00-08:00">14 Nov 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/11/12/Linear-System/">
+            Linear System
+            <small><time datetime="2015-11-12T00:00:00-08:00">12 Nov 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/11/10/Energy-Discussion/">
+            Energy discussion
+            <small><time datetime="2015-11-10T00:00:00-08:00">10 Nov 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+
+      <div class="footer">
+        <p>
+          &copy; 2015. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

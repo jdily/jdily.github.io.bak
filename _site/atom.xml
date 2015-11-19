@@ -4,13 +4,71 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-14T16:46:24-08:00</updated>
+ <updated>2015-11-18T20:55:45-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Nov 18, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/11/18/Nov-18-meeting-note/"/>
+   <updated>2015-11-18T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/meeting/2015/11/18/Nov-18-meeting-note</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;There are mainly two parts in today’s discussion:
+    &lt;ul&gt;
+      &lt;li&gt;parameter learning for single shape.&lt;/li&gt;
+      &lt;li&gt;parameter learning for multiple shape.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;for-single-shape&quot;&gt;For single shape&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;check the parameter learning optimization on some other example shapes.&lt;/li&gt;
+  &lt;li&gt;compare the learned parameter with manually set parameter after several iterations..
+    &lt;ul&gt;
+      &lt;li&gt;This is to prove that the parameter learning is useful that we can get results more similar to ground truth shape.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;check whether we should keep doing parameter learning iteration by iteration. To check this, we can compare:
+    &lt;ul&gt;
+      &lt;li&gt;multiple iterations of reconstructions with fixed parameters learned from single iteration parameter learning.&lt;/li&gt;
+      &lt;li&gt;multiple iterations of reconstructions with updated parameters.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;We also have to check whether the convergence of both reconstruction optimization (i.e. optimize t), and parameter learning optimization (i.e. optimize $\sigma_L$, $\sigma_B$, and $C$)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;for-multiple-shape&quot;&gt;For multiple shape&lt;/h3&gt;
+&lt;p&gt;Assume for each shape, we get corresponding parameters  ($\sigma_L$, $\sigma_B$, and $C$), or parameter sets (multiple $\sigma_L$, $\sigma_B$, and $C$ across different iteration.), how we combine these information, and for a new shape, we can come up new parameters for it?&lt;/p&gt;
+
+&lt;h4 id=&quot;learning-approaches&quot;&gt;Learning approaches&lt;/h4&gt;
+&lt;p&gt;We can utilize multi-class classification algorithm like linear classification or SVM, classify some template shape we have, with their corresponding parameters. 
+And for each new shape, we can predict the possibilities of them being different classes, and use that as confident to weighted average the parameters.&lt;/p&gt;
+
+&lt;h4 id=&quot;feature-space&quot;&gt;Feature space&lt;/h4&gt;
+&lt;p&gt;For learning parameters across different shapes, we need to find the right parameter spaces for &lt;strong&gt;global&lt;/strong&gt; or &lt;strong&gt;local&lt;/strong&gt; structure.
+One possible direction is to extract the histogram of curvature, or the laplacian vectors.&lt;/p&gt;
+
+&lt;h2 id=&quot;todo&quot;&gt;TODO&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;run the parameter learning only 1 iteration for different shapes, and see the behaviour.&lt;/li&gt;
+  &lt;li&gt;do the parameter learning for multiple iterations, and compare the reconstruct result with 
+    &lt;ul&gt;
+      &lt;li&gt;fix parameter (only one iteration parameter learning) and &lt;/li&gt;
+      &lt;li&gt;manually set parameter.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;after getting the above steps, I can  start to work on learning from multiple shapes, both training and testing step…&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>New energy and some results</title>
