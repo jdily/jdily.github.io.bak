@@ -10,7 +10,7 @@
 
   <title>
     
-      Linear System &middot; Smooth Voxel Modeling
+      Dec 02, 2015 Meeting note &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,42 +65,44 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Linear System</h1>
-  <time datetime="2015-11-12T00:00:00-08:00" class="post-date">12 Nov 2015</time>
-  <h2 id="the-linear-system">The linear system</h2>
-<p>If we only look at the third term (laplacian positioning term) : <script type="math/tex"> ( L(e_i) -d_i )^2  </script>, I think we got </p>
+  <h1 class="post-title">Dec 02, 2015 Meeting note</h1>
+  <time datetime="2015-12-02T00:00:00-08:00" class="post-date">02 Dec 2015</time>
+  <h2 id="notes">Notes</h2>
 
-<script type="math/tex; mode=display">e_i - 0.5 e_{p} - 0.5 e_{n} - d_i = 0 </script>
+<ul>
+  <li>Sampling problem : First I raised some issues that I also talked about in the email. And the reason why the [0,1] range is not guaranteed.
+    <ul>
+      <li>possible solution is to always find diagonal points as reference, but with ambiguities.</li>
+    </ul>
+  </li>
+  <li>The fitting curve : The current fitted curve are too rough, we have to finely fitted it by increase the detail of the fitting curve.</li>
+  <li>Generate data for labeling singularity:
+    <ul>
+      <li>direct labeling on the resampled polygon is not right, it’s not clear which points should be assigned as singularity.</li>
+      <li>The singularity should be labeled on fitted polygon, and then try to transfer to resampled polygon.
+        <ul>
+          <li>one method to do is find the closest sample in the resampled polygon.</li>
+        </ul>
+      </li>
+      <li>singularity should be judged directly on the bezier curve.</li>
+    </ul>
+  </li>
+  <li>Some notes:
+    <ul>
+      <li>we should be careful about choosing the resolution. The resolution should be high enough to capture the geometry detail in the original shape.
+        <ul>
+          <li>one check is that if we singular points on the continuous shape results in a single sample, then it means we don’t have enough resolution..
+## Todos</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>fitted a smoother curve to the original shape</li>
+  <li>try to automatically pick the discontinuities on the bezier curves..</li>
+  <li>transfer these discontinuities to the resampled polygon as label…</li>
+  <li>extract feature and label to train classifier, train like a face detector (discuss with Zhaowen in detail.)</li>
+</ul>
 
-<p>where $p = i-1$ and $n = i+1$.</p>
-
-<p>So far, I formulate the optimization in terms of $t_i$, so the previous equation can be transformed into:</p>
-
-<script type="math/tex; mode=display"> 
-P_{i0}\cdot (1-t_i)+P_{i1} \cdot t_i - 0.5 \cdot (P_{p0}\cdot (1-t_p)+P_{p1}\cdot t_p) - 0.5 \cdot (P_{n0}\cdot (1-t_n)+P_{n1}\cdot t_n) 
-= d_i
-</script>
-
-<script type="math/tex; mode=display">
-t_i \cdot (P_{i1} - P_{i0}) - t_p \cdot 0.5 \cdot (P_{p1}-P_{p0}) -  t_n \cdot 0.5 \cdot (P_{n1}-P_{n0}) =  d_i - P_{i0} + 0.5\cdot P_{p0} + 0.5\cdot P_{n0}
-</script>
-
-<p>and all the $P_{xx}$ and $d_i$ are 2D vectors in current 2D setting.
-It means we have two equations for each $i$, i.e. </p>
-
-<p><script type="math/tex">
-t_i \cdot (P_{i1}.x - P_{i0}.x) - t_p \cdot 0.5 \cdot (P_{p1}.x-P_{p0}.x) -  t_n \cdot 0.5 \cdot (P_{n1}.x-P_{n0}.x) =  \\
-d_i .x- P_{i0}.x + 0.5\cdot P_{p0}.x + 0.5\cdot P_{n0}.x
-</script>
-and </p>
-
-<script type="math/tex; mode=display">
-t_i \cdot (P_{i1}.y - P_{i0}.y) - t_p \cdot 0.5 \cdot (P_{p1}.y-P_{p0}.y) -  t_n \cdot 0.5 \cdot (P_{n1}.y-P_{n0}.y) =  \\
-d_i .y- P_{i0}.y + 0.5\cdot P_{p0}.y + 0.5\cdot P_{n0}.y
-</script>
-
-<p>and i think it leads to an over-determined system.
-So if we have $n$ unknowns (i.e. <script type="math/tex">t_0... t_{n-1}</script>), then we will get a <script type="math/tex">2n\times n</script> matrix $A$ before add any positional constraints (boundary condition.)</p>
 
 </article>
 
@@ -108,15 +110,6 @@ So if we have $n$ unknowns (i.e. <script type="math/tex">t_0... t_{n-1}</script>
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/meeting/2015/12/02/Dec-02-Meeting-Note/">
-            Dec 02, 2015 Meeting note
-            <small><time datetime="2015-12-02T00:00:00-08:00">02 Dec 2015</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -132,6 +125,15 @@ So if we have $n$ unknowns (i.e. <script type="math/tex">t_0... t_{n-1}</script>
           <a href="/progress/2015/11/14/New-energy-formulation-result/">
             New energy and some results
             <small><time datetime="2015-11-14T00:00:00-08:00">14 Nov 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/11/12/Linear-System/">
+            Linear System
+            <small><time datetime="2015-11-12T00:00:00-08:00">12 Nov 2015</time></small>
           </a>
         </h3>
       </li>

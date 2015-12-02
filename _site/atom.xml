@@ -4,13 +4,57 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-11-18T20:55:45-08:00</updated>
+ <updated>2015-12-02T15:47:24-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Dec 02, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/12/02/Dec-02-Meeting-Note/"/>
+   <updated>2015-12-02T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/meeting/2015/12/02/Dec-02-Meeting-Note</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sampling problem : First I raised some issues that I also talked about in the email. And the reason why the [0,1] range is not guaranteed.
+    &lt;ul&gt;
+      &lt;li&gt;possible solution is to always find diagonal points as reference, but with ambiguities.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The fitting curve : The current fitted curve are too rough, we have to finely fitted it by increase the detail of the fitting curve.&lt;/li&gt;
+  &lt;li&gt;Generate data for labeling singularity:
+    &lt;ul&gt;
+      &lt;li&gt;direct labeling on the resampled polygon is not right, it’s not clear which points should be assigned as singularity.&lt;/li&gt;
+      &lt;li&gt;The singularity should be labeled on fitted polygon, and then try to transfer to resampled polygon.
+        &lt;ul&gt;
+          &lt;li&gt;one method to do is find the closest sample in the resampled polygon.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;singularity should be judged directly on the bezier curve.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Some notes:
+    &lt;ul&gt;
+      &lt;li&gt;we should be careful about choosing the resolution. The resolution should be high enough to capture the geometry detail in the original shape.
+        &lt;ul&gt;
+          &lt;li&gt;one check is that if we singular points on the continuous shape results in a single sample, then it means we don’t have enough resolution..
+## Todos&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;fitted a smoother curve to the original shape&lt;/li&gt;
+  &lt;li&gt;try to automatically pick the discontinuities on the bezier curves..&lt;/li&gt;
+  &lt;li&gt;transfer these discontinuities to the resampled polygon as label…&lt;/li&gt;
+  &lt;li&gt;extract feature and label to train classifier, train like a face detector (discuss with Zhaowen in detail.)&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Nov 18, 2015 Meeting note</title>
