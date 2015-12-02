@@ -17,6 +17,7 @@ use_math: true
 - Some notes:
 	- we should be careful about choosing the resolution. The resolution should be high enough to capture the geometry detail in the original shape.
 		- one check is that if we singular points on the continuous shape results in a single sample, then it means we don't have enough resolution..
+	
 ## Todos
 - fitted a smoother curve to the original shape
 - try to automatically pick the discontinuities on the bezier curves..

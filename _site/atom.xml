@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-12-02T15:47:24-08:00</updated>
+ <updated>2015-12-02T15:50:29-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -41,12 +41,15 @@
     &lt;ul&gt;
       &lt;li&gt;we should be careful about choosing the resolution. The resolution should be high enough to capture the geometry detail in the original shape.
         &lt;ul&gt;
-          &lt;li&gt;one check is that if we singular points on the continuous shape results in a single sample, then it means we don’t have enough resolution..
-## Todos&lt;/li&gt;
+          &lt;li&gt;one check is that if we singular points on the continuous shape results in a single sample, then it means we don’t have enough resolution..&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;todos&quot;&gt;Todos&lt;/h2&gt;
+&lt;ul&gt;
   &lt;li&gt;fitted a smoother curve to the original shape&lt;/li&gt;
   &lt;li&gt;try to automatically pick the discontinuities on the bezier curves..&lt;/li&gt;
   &lt;li&gt;transfer these discontinuities to the resampled polygon as label…&lt;/li&gt;
