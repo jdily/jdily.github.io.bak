@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-12-15T09:44:57-08:00</updated>
+ <updated>2015-12-15T09:47:40-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -28,6 +28,10 @@
     &lt;tr&gt;
       &lt;td&gt;airplane&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;![alt text][http://jdily.github.io/images/airplane.svg]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;airplane2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;http://jdily.github.io/images/airplane.svg&quot; alt=&quot;airplane&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
