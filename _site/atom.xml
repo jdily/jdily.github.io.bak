@@ -4,13 +4,78 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-12-02T15:50:29-08:00</updated>
+ <updated>2015-12-15T09:44:57-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Shape List</title>
+   <link href="http://jdily.github.io/draft/2015/12/15/Shape-Repo/"/>
+   <updated>2015-12-15T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/draft/2015/12/15/Shape-Repo</id>
+   <content type="html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Image&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;airplane&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;![alt text][http://jdily.github.io/images/airplane.svg]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Dec 09, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/12/09/Dec-09-Meeting-Note/"/>
+   <updated>2015-12-09T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/meeting/2015/12/09/Dec-09-Meeting-Note</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Feature problem:
+    &lt;ul&gt;
+      &lt;li&gt;the window size matters :
+        &lt;ul&gt;
+          &lt;li&gt;how large the window size can help us to identify  singularity visually?&lt;/li&gt;
+          &lt;li&gt;can the larger window size make the feature separable in the high dimensional space?&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;some small hacks during the singularity point transfer process
+        &lt;ul&gt;
+          &lt;li&gt;pick the closest point that is not on the flat region, i.e. always assign the singular label to either concave or convex corner…&lt;/li&gt;
+          &lt;li&gt;think about the problem: if the two neighbouring samples are very similar, but one is labeled as positive and one is not, it will be very hard to separate them with classifier..&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;feature augment:
+        &lt;ul&gt;
+          &lt;li&gt;one possible direction is to augment the feature with pixel value in the local window.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;The evaluation should focus on doing the reasonable thing for a big shape set, not particularly on a single shape..&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;todos&quot;&gt;Todos&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;come up visual results and comparisons for evaluating window size for local shape pattern…&lt;/li&gt;
+  &lt;li&gt;do the small additional step for transferring the singular points.&lt;/li&gt;
+  &lt;li&gt;experiment with the context less shape feature.&lt;/li&gt;
+  &lt;li&gt;collect more shapes, and generate results automatically.&lt;/li&gt;
+  &lt;li&gt;try to augment the current feature..&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Dec 02, 2015 Meeting note</title>

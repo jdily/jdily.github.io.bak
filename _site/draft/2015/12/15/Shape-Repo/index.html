@@ -10,7 +10,7 @@
 
   <title>
     
-      Sep 23, 2015 Meeting note &middot; Smooth Voxel Modeling
+      Shape List &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -25,6 +25,24 @@
   <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
 </head>
 
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
   
   <body>
 
@@ -47,41 +65,22 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Sep 23, 2015 Meeting note</h1>
-  <time datetime="2015-09-23T00:00:00-07:00" class="post-date">23 Sep 2015</time>
-  <h2 id="importants">Importants</h2>
-<p>Next meeting : Sep 29 (Tue), 1:00 pm  </p>
-
-<h2 id="notes">Notes</h2>
-<ul>
-  <li>Visualization should be changed so that we can see the line clearer.</li>
-  <li>Smoothness issue
-    <ul>
-      <li>leverage local laplacian, i.e. describe a pixel crossing with two neighbors.</li>
-      <li>find out what we want, i.e. the optimization function.</li>
-      <li>We can 
-        <ul>
-          <li>use network results as initial value (i.e. using network to do the feature pattern-&gt;crossing value mapping, because it’s hard to formulate as a numerical optimization.)</li>
-          <li>and do a post-optimization for smoothness (this one is easier to do optimization.)  </li>
-          <li>Also, we can try to incorporate this process into the network, as a new layer.</li>
-        </ul>
-      </li>
-      <li>The current result can be consider as first-order prediction, we can try to make the loss (objective) function complicated and try to predict some other things.</li>
-      <li>For interactive usage, if post-optimization (globally) is needed, we can only do it once a while, but not after every update.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="action-items">Action Items</h2>
-<ol>
-  <li>generate double feature set -&gt; for reflective symmetries</li>
-  <li>Run experiment -&gt; use triangle and rect to reconstruct arrow.</li>
-  <li>drafting the introduction, including notation and target optimization function.</li>
-  <li>experiment with the two step optimization including laplacian</li>
-  <li>integrate caffe model into c++</li>
-  <li>Implement the new representation and compare..</li>
-</ol>
-
+  <h1 class="post-title">Shape List</h1>
+  <time datetime="2015-12-15T00:00:00-08:00" class="post-date">15 Dec 2015</time>
+  <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: center">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>airplane</td>
+      <td style="text-align: center">![alt text][http://jdily.github.io/images/airplane.svg]</td>
+    </tr>
+  </tbody>
+</table>
 
 </article>
 
@@ -89,15 +88,6 @@
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/draft/2015/12/15/Shape-Repo/">
-            Shape List
-            <small><time datetime="2015-12-15T00:00:00-08:00">15 Dec 2015</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -113,6 +103,15 @@
           <a href="/meeting/2015/12/02/Dec-02-Meeting-Note/">
             Dec 02, 2015 Meeting note
             <small><time datetime="2015-12-02T00:00:00-08:00">02 Dec 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/meeting/2015/11/18/Nov-18-meeting-note/">
+            Nov 18, 2015 Meeting note
+            <small><time datetime="2015-11-18T00:00:00-08:00">18 Nov 2015</time></small>
           </a>
         </h3>
       </li>

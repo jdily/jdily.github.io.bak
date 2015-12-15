@@ -10,7 +10,7 @@
 
   <title>
     
-      Term comparison &middot; Smooth Voxel Modeling
+      Dec 09, 2015 Meeting note &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,11 +65,43 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Term comparison</h1>
-  <time datetime="2015-10-05T00:00:00-07:00" class="post-date">05 Oct 2015</time>
-  <p>Put some comparison for both term at </p>
+  <h1 class="post-title">Dec 09, 2015 Meeting note</h1>
+  <time datetime="2015-12-09T00:00:00-08:00" class="post-date">09 Dec 2015</time>
+  <h2 id="notes">Notes</h2>
 
-<p><a href="https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html">https://www.cs.ubc.ca/~ichaos/research/nbview/term%20comparison%20-%20cases.html</a></p>
+<ul>
+  <li>Feature problem:
+    <ul>
+      <li>the window size matters :
+        <ul>
+          <li>how large the window size can help us to identify  singularity visually?</li>
+          <li>can the larger window size make the feature separable in the high dimensional space?</li>
+        </ul>
+      </li>
+      <li>some small hacks during the singularity point transfer process
+        <ul>
+          <li>pick the closest point that is not on the flat region, i.e. always assign the singular label to either concave or convex corner…</li>
+          <li>think about the problem: if the two neighbouring samples are very similar, but one is labeled as positive and one is not, it will be very hard to separate them with classifier..</li>
+        </ul>
+      </li>
+      <li>feature augment:
+        <ul>
+          <li>one possible direction is to augment the feature with pixel value in the local window.</li>
+        </ul>
+      </li>
+      <li>The evaluation should focus on doing the reasonable thing for a big shape set, not particularly on a single shape..</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="todos">Todos</h2>
+<ul>
+  <li>come up visual results and comparisons for evaluating window size for local shape pattern…</li>
+  <li>do the small additional step for transferring the singular points.</li>
+  <li>experiment with the context less shape feature.</li>
+  <li>collect more shapes, and generate results automatically.</li>
+  <li>try to augment the current feature..</li>
+</ul>
 
 </article>
 
@@ -89,18 +121,18 @@
     
       <li>
         <h3>
-          <a href="/meeting/2015/12/09/Dec-09-Meeting-Note/">
-            Dec 09, 2015 Meeting note
-            <small><time datetime="2015-12-09T00:00:00-08:00">09 Dec 2015</time></small>
+          <a href="/meeting/2015/12/02/Dec-02-Meeting-Note/">
+            Dec 02, 2015 Meeting note
+            <small><time datetime="2015-12-02T00:00:00-08:00">02 Dec 2015</time></small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/meeting/2015/12/02/Dec-02-Meeting-Note/">
-            Dec 02, 2015 Meeting note
-            <small><time datetime="2015-12-02T00:00:00-08:00">02 Dec 2015</time></small>
+          <a href="/meeting/2015/11/18/Nov-18-meeting-note/">
+            Nov 18, 2015 Meeting note
+            <small><time datetime="2015-11-18T00:00:00-08:00">18 Nov 2015</time></small>
           </a>
         </h3>
       </li>
