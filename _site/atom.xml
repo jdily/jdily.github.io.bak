@@ -4,13 +4,70 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-12-15T10:32:09-08:00</updated>
+ <updated>2015-12-17T14:37:03-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Dec 16, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2015/12/16/Meeting-note/"/>
+   <updated>2015-12-16T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/meeting/2015/12/16/Meeting-note</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Threshold for likelihood prediction
+    &lt;ul&gt;
+      &lt;li&gt;We should do some maximum suppression method here, that decide the local maximum, instead of using a global threshold for deciding the hard singular points from predicting likelihood&lt;/li&gt;
+      &lt;li&gt;also, we can do a experiment : set the threshold manually, case-by-case, and observe whether the singular points are as expected..&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Likelihood prediction
+    &lt;ul&gt;
+      &lt;li&gt;visualize the predicted likelihood on the polylines&lt;/li&gt;
+      &lt;li&gt;for each case, observe the peak in the plotting for different resolution (do at least 2 resolution for each shape, and compare.)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;New feature (context-less feature) that encode the neighbouring corners:
+    &lt;ul&gt;
+      &lt;li&gt;check the magnitude, and normalize it first before doing high dimensional plotting (because the plotting for ncontx feature and concatenate feature are similar..)&lt;/li&gt;
+      &lt;li&gt;Sanity check for this feature-&amp;gt; use several simple primitives, like squares, rotated it…&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Find spatial feature
+    &lt;ul&gt;
+      &lt;li&gt;try to incorporate spatial information, using raw pixel value or shape context features..&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The curvy straight line around corner :
+    &lt;ul&gt;
+      &lt;li&gt;overlay the low-resolution image beneath, we should understand whether the low resolution input constrain us…&lt;/li&gt;
+      &lt;li&gt;To debug, we can try to fix position of corner points, and try to do the optimization, observe the output straight line..&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;bilaplacian term formulation
+    &lt;ul&gt;
+      &lt;li&gt;for soft weight, should also try to down weight the biliaplacian terms around the corner&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;todos&quot;&gt;Todos&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;visualize the likelihood values on polylines after prediction…&lt;/li&gt;
+  &lt;li&gt;observe the peak for different resolution, check out whether resolution can help to identify the singular points..&lt;/li&gt;
+  &lt;li&gt;find a way to identify local maximum (maximum suppression) as singular points.&lt;/li&gt;
+  &lt;li&gt;debug for the curvy line : (a) vis the low resolution beneath.&lt;/li&gt;
+  &lt;li&gt;debug for the curvy line : (b) find a simple case and fix positions for debugging.&lt;/li&gt;
+  &lt;li&gt;down weight biliaplacian terms for soft weight optimization..&lt;/li&gt;
+  &lt;li&gt;normalize the new feature, and check whether it helps for regression.&lt;/li&gt;
+  &lt;li&gt;add spatial feature, e.g. shape context feature descriptors..&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Shape List</title>
