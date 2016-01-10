@@ -7,6 +7,7 @@ use_math: true
 
 ## Formulation results comparison
 Here, I compare two different formulations (the differences are focus on the last term), one denoted as **fix**, and one denoted as **stable**.
+And all the results shown here, I used ground truth singularity point, so this is only for comparing optimization function, which is independent from learning performance..
 
 ###  fix 
 $$F = \sum_i P_i*(w_i^L\cdot (L(e_i))^2 + w_i^B\cdot (B(e_i))^2) + \sum_j 10000.0\cdot (t_j-0.5)^2$$

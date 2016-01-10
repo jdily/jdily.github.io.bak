@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2016-01-10T13:49:08-08:00</updated>
+ <updated>2016-01-10T13:53:35-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -18,7 +18,8 @@
    <updated>2016-01-10T00:00:00-08:00</updated>
    <id>http://jdily.github.io/progress/2016/01/10/formulation-comparison</id>
    <content type="html">&lt;h2 id=&quot;formulation-results-comparison&quot;&gt;Formulation results comparison&lt;/h2&gt;
-&lt;p&gt;Here, I compare two different formulations (the differences are focus on the last term), one denoted as &lt;strong&gt;fix&lt;/strong&gt;, and one denoted as &lt;strong&gt;stable&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Here, I compare two different formulations (the differences are focus on the last term), one denoted as &lt;strong&gt;fix&lt;/strong&gt;, and one denoted as &lt;strong&gt;stable&lt;/strong&gt;.
+And all the results shown here, I used ground truth singularity point, so this is only for comparing optimization function, which is independent from learning performance..&lt;/p&gt;
 
 &lt;h3 id=&quot;fix&quot;&gt;fix&lt;/h3&gt;
 &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;F = \sum_i P_i*(w_i^L\cdot (L(e_i))^2 + w_i^B\cdot (B(e_i))^2) + \sum_j 10000.0\cdot (t_j-0.5)^2&lt;/script&gt;&lt;/p&gt;
