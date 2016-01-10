@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Formulation comparison for cases &middot; Smooth Voxel Modeling
+    
+  </title>
+
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="/styles.css"> -->
+  <link rel="stylesheet" href="http://jdily.github.io/styles.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Smooth Voxel Modeling" href="/atom.xml">
+</head>
+
+  
+      <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$']],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  
+  <body>
+
+    <div class="container content">
+      <div class="masthead">
+        <h3 class="masthead-title">
+          <a href="/problem" title="Home">Smooth Voxel Modeling</a>
+
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/problem">Problem</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/progress">Progress</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/meeting">Meeting Note</a></small>
+          
+              &nbsp;&nbsp;&nbsp;<small><a href="/draft">Draft</a></small>
+          
+
+        </h3>
+      </div>
+
+      <article class="post">
+  <h1 class="post-title">Formulation comparison for cases</h1>
+  <time datetime="2016-01-10T00:00:00-08:00" class="post-date">10 Jan 2016</time>
+  <h2 id="formulation-results-comparison">Formulation results comparison</h2>
+<p>Here, I compare two different formulations (the differences are focus on the last term), one denoted as <strong>fix</strong>, and one denoted as <strong>stable</strong>.</p>
+
+<h3 id="fix">fix</h3>
+<p><script type="math/tex">F = \sum_i P_i*(w_i^L\cdot (L(e_i))^2 + w_i^B\cdot (B(e_i))^2) + \sum_j 10000.0\cdot (t_j-0.5)^2</script></p>
+
+<h3 id="stable">stable</h3>
+<p><script type="math/tex">F = \sum_i P_i*(w_i^L\cdot (L(e_i))^2 + w_i^B\cdot (B(e_i))^2 + 0.001\cdot (t_i-0.5)^2)</script></p>
+
+<h3 id="result-links">Result links</h3>
+<ul>
+  <li>note : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note.html</a></li>
+  <li>flag : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-flag.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-flag.html</a></li>
+  <li>pacman : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-pacman.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-pacman.html</a></li>
+  <li>cloud : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-cloud.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-cloud.html</a></li>
+  <li>share : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-share.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-share.html</a></li>
+  <li>airplane : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane.html</a></li>
+  <li>airplane3 : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane3.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane3.html</a></li>
+  <li>atomic : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-atomic.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-atomic.html</a></li>
+  <li>bell : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bell.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bell.html</a></li>
+  <li>bone : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bone.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bone.html</a></li>
+  <li>crown : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-crown.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-crown.html</a></li>
+  <li>dumbbell : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-dumbbell.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-dumbbell.html</a></li>
+  <li>glass3 : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-glass3.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-glass3.html</a></li>
+  <li>guitar : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-guitar.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-guitar.html</a></li>
+  <li>hand : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-hand.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-hand.html</a></li>
+  <li>headphone : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-headphone.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-headphone.html</a></li>
+  <li>keyhole : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-keyhole.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-keyhole.html</a></li>
+  <li>note2 : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note2.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note2.html</a></li>
+  <li>screwdriver : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-screwdriver.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-screwdriver.html</a></li>
+  <li>tabletennis : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tabletennis.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tabletennis.html</a></li>
+  <li>tool : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tool.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tool.html</a></li>
+  <li>tshirt : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tshirt.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tshirt.html</a></li>
+  <li>user : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-user.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-user.html</a></li>
+  <li>weight : <a href="https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-weight.html">https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-weight.html</a></li>
+</ul>
+
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/meeting/2015/12/16/Meeting-note/">
+            Dec 16, 2015 Meeting note
+            <small><time datetime="2015-12-16T00:00:00-08:00">16 Dec 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/12/15/Shape-Repo/">
+            Shape List
+            <small><time datetime="2015-12-15T00:00:00-08:00">15 Dec 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/meeting/2015/12/09/Dec-09-Meeting-Note/">
+            Dec 09, 2015 Meeting note
+            <small><time datetime="2015-12-09T00:00:00-08:00">09 Dec 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+
+      <div class="footer">
+        <p>
+          &copy; 2016. All rights reserved.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -4,13 +4,57 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2015-12-17T14:37:03-08:00</updated>
+ <updated>2016-01-10T13:49:08-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Formulation comparison for cases</title>
+   <link href="http://jdily.github.io/progress/2016/01/10/formulation-comparison/"/>
+   <updated>2016-01-10T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/progress/2016/01/10/formulation-comparison</id>
+   <content type="html">&lt;h2 id=&quot;formulation-results-comparison&quot;&gt;Formulation results comparison&lt;/h2&gt;
+&lt;p&gt;Here, I compare two different formulations (the differences are focus on the last term), one denoted as &lt;strong&gt;fix&lt;/strong&gt;, and one denoted as &lt;strong&gt;stable&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;fix&quot;&gt;fix&lt;/h3&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;F = \sum_i P_i*(w_i^L\cdot (L(e_i))^2 + w_i^B\cdot (B(e_i))^2) + \sum_j 10000.0\cdot (t_j-0.5)^2&lt;/script&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;stable&quot;&gt;stable&lt;/h3&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;F = \sum_i P_i*(w_i^L\cdot (L(e_i))^2 + w_i^B\cdot (B(e_i))^2 + 0.001\cdot (t_i-0.5)^2)&lt;/script&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;result-links&quot;&gt;Result links&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;note : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;flag : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-flag.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-flag.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;pacman : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-pacman.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-pacman.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;cloud : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-cloud.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-cloud.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;share : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-share.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-share.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;airplane : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;airplane3 : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane3.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-airplane3.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;atomic : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-atomic.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-atomic.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;bell : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bell.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bell.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;bone : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bone.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-bone.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;crown : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-crown.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-crown.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;dumbbell : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-dumbbell.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-dumbbell.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;glass3 : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-glass3.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-glass3.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;guitar : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-guitar.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-guitar.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;hand : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-hand.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-hand.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;headphone : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-headphone.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-headphone.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;keyhole : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-keyhole.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-keyhole.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;note2 : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note2.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-note2.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;screwdriver : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-screwdriver.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-screwdriver.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;tabletennis : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tabletennis.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tabletennis.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;tool : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tool.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tool.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;tshirt : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tshirt.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-tshirt.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;user : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-user.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-user.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;weight : &lt;a href=&quot;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-weight.html&quot;&gt;https://www.cs.ubc.ca/~ichaos/research/nbview/formulation-compare-weight.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Dec 16, 2015 Meeting note</title>
