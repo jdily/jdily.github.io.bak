@@ -4,7 +4,7 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2016-01-27T15:47:53-08:00</updated>
+ <updated>2016-01-27T15:49:53-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
@@ -21,8 +21,8 @@
 &lt;ul&gt;
   &lt;li&gt;detect corner
     &lt;ul&gt;
-      &lt;li&gt;first order &lt;/li&gt;
-      &lt;li&gt;second order&lt;/li&gt;
+      &lt;li&gt;$C_1$ discontinuity&lt;/li&gt;
+      &lt;li&gt;$C_2$ discontinuity&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;make sure the rasterized results from the reconstructed curve is the same as the input.&lt;/li&gt;

@@ -6,8 +6,8 @@ use_math: true
 ---
 ## Notes
 - detect corner
-	- first order 
-	- second order
+	- $C_1$ discontinuity
+	- $C_2$ discontinuity
 - make sure the rasterized results from the reconstructed curve is the same as the input.
 - We can change to clothoid curve fitting instead of current fitting...
 - One possible direction is to infer the hidden structure (global information) after segments reconstruction.
