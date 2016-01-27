@@ -10,7 +10,7 @@
 
   <title>
     
-      Energy discussion &middot; Smooth Voxel Modeling
+      Jan 27, 2015 Meeting note &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,28 +65,33 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Energy discussion</h1>
-  <time datetime="2015-10-06T00:00:00-07:00" class="post-date">06 Oct 2015</time>
-  <h3 id="normalization-problem">normalization problem</h3>
-<p>I think we may have problem with our current energy due to non-equal spacing.
-For the local smoothing operation, i.e. only term1</p>
+  <h1 class="post-title">Jan 27, 2015 Meeting note</h1>
+  <time datetime="2016-01-27T00:00:00-08:00" class="post-date">27 Jan 2016</time>
+  <h2 id="notes">Notes</h2>
+<ul>
+  <li>detect corner
+    <ul>
+      <li>first order </li>
+      <li>second order</li>
+    </ul>
+  </li>
+  <li>make sure the rasterized results from the reconstructed curve is the same as the input.</li>
+  <li>We can change to clothoid curve fitting instead of current fitting…</li>
+  <li>One possible direction is to infer the hidden structure (global information) after segments reconstruction.
+    <ul>
+      <li>we can try to extrapolate the curve, and check whether the end points intersect with other segments.
+  In this way, we can do a consistency optimization (update) after segment optimization.</li>
+    </ul>
+  </li>
+</ul>
 
-<script type="math/tex; mode=display">  \sum_{e_i} W_1(e_i)\| e_i - (e_{i-1}+e_{i+1})/2\| _2^2 </script>
-
-<p>we are trying to minimize the distance of blue arrow in the figure below (i.e. minimizing curvature) by encouraging flatten.</p>
-
-<p><img src="http://jdily.github.io/images/mini_curvature.png" alt="minimize curvature" /></p>
-
-<p>In this case, straight line should minimize this energy. However, I think that only happens when the spacing is equal. </p>
-
-<p>If all our results (e_i’s) are lying on the same line, as shown below:</p>
-
-<p><img src="http://jdily.github.io/images/spacing.png" alt="spacing comparison" /></p>
-
-<p>As we can see in the figure, if the spacing is not equal, then even straight line can not minimize this energy, even though the curvature is already minimized..
-So I think the energy may need to be modified as taking the edge length proportion into consideration..</p>
-
-<h3 id="angle-version">angle version!?</h3>
+<h2 id="todo">Todo</h2>
+<ul>
+  <li>try to use the clothoid code (cornucopia) , and apply it on our constrained curve reconstruction.</li>
+  <li>detect C2 discontinuity.</li>
+  <li>finish the entire pipeline.</li>
+  <li></li>
+</ul>
 
 </article>
 
@@ -94,15 +99,6 @@ So I think the energy may need to be modified as taking the edge length proporti
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/meeting/2016/01/27/Meeting-Note/">
-            Jan 27, 2015 Meeting note
-            <small><time datetime="2016-01-27T00:00:00-08:00">27 Jan 2016</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -118,6 +114,15 @@ So I think the energy may need to be modified as taking the edge length proporti
           <a href="/meeting/2015/12/16/Meeting-note/">
             Dec 16, 2015 Meeting note
             <small><time datetime="2015-12-16T00:00:00-08:00">16 Dec 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/draft/2015/12/15/Shape-Repo/">
+            Shape List
+            <small><time datetime="2015-12-15T00:00:00-08:00">15 Dec 2015</time></small>
           </a>
         </h3>
       </li>

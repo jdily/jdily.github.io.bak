@@ -4,13 +4,46 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2016-01-10T13:53:35-08:00</updated>
+ <updated>2016-01-27T15:47:53-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Jan 27, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2016/01/27/Meeting-Note/"/>
+   <updated>2016-01-27T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/meeting/2016/01/27/Meeting-Note</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;detect corner
+    &lt;ul&gt;
+      &lt;li&gt;first order &lt;/li&gt;
+      &lt;li&gt;second order&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;make sure the rasterized results from the reconstructed curve is the same as the input.&lt;/li&gt;
+  &lt;li&gt;We can change to clothoid curve fitting instead of current fitting…&lt;/li&gt;
+  &lt;li&gt;One possible direction is to infer the hidden structure (global information) after segments reconstruction.
+    &lt;ul&gt;
+      &lt;li&gt;we can try to extrapolate the curve, and check whether the end points intersect with other segments.
+  In this way, we can do a consistency optimization (update) after segment optimization.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;todo&quot;&gt;Todo&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;try to use the clothoid code (cornucopia) , and apply it on our constrained curve reconstruction.&lt;/li&gt;
+  &lt;li&gt;detect C2 discontinuity.&lt;/li&gt;
+  &lt;li&gt;finish the entire pipeline.&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Formulation comparison for cases</title>
