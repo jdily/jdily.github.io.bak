@@ -57,3 +57,4 @@ We can design a optimization, with the goal as : alter the parameters as little 
 
 For both approaches, we all need a metric that can measure how the primitive deviate from [0-1] range constraint.
 More specifically, imho, we should decide **where to evaluate** this constraint on the primitive.
+Also, for evaluating it, we might need the analytic form of every primitives.
