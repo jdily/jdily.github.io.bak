@@ -10,7 +10,7 @@
 
   <title>
     
-      Oct 14, 2015 Meeting note &middot; Smooth Voxel Modeling
+      Feb 03, 2015 Meeting note &middot; Smooth Voxel Modeling
     
   </title>
 
@@ -65,31 +65,57 @@
       </div>
 
       <article class="post">
-  <h1 class="post-title">Oct 14, 2015 Meeting note</h1>
-  <time datetime="2015-10-15T00:00:00-07:00" class="post-date">15 Oct 2015</time>
-  <h1 id="notes">Notes</h1>
-<p><img src="http://jdily.github.io/images/note-20131014.png" alt="meeting sketch" /></p>
-
+  <h1 class="post-title">Feb 03, 2015 Meeting note</h1>
+  <time datetime="2016-02-03T00:00:00-08:00" class="post-date">03 Feb 2016</time>
+  <h2 id="notes">Notes</h2>
 <ul>
-  <li>there is no need to keep both laplacian and bi-laplacian in the same time if we add <strong>data-driven</strong> bias term.
+  <li>A top-down approach to fit primitives, (ref : GlobFit @ SIGGRAPH 2011) :
     <ul>
-      <li>In the sketch figure, basically if we keep both terms and use weights to control the local behavior, it’s basically similar to use only one term with spatial-varying bias term. </li>
+      <li>GlobFit got global info, and Cornucopia use local info, and we want to combine both…</li>
+      <li>we want to fit a family of primitives within our <strong>interval</strong>..
+        <ul>
+          <li>line, arc, clothoid, hermit…</li>
+        </ul>
+      </li>
+      <li>simultaneously, we expect that the number of primitives as small as possible..</li>
+      <li>The process should be like the following: (I will write down a pseudocode like thing in another document that we can discuss algorithm):
+        <ol>
+          <li>fit initial primitive to entire samples, it one fit, e.g. one circle fit, then done.</li>
+          <li>detect sharp corners, and get segments…</li>
+          <li>fit regular primitives to a segment (span)</li>
+          <li>see whether the same fit (parameter of the primitive) can be fit else where.. (global relationship, e.g. parallel or orthogonal for line…)</li>
+          <li>if unmatch for all primitive -&gt; consider further segment -&gt; fit primitive or smooth curves…</li>
+          <li>consolidate and see whether we can reduce the primitive set smaller..</li>
+        </ol>
+      </li>
     </ul>
   </li>
-  <li>we can get two things from ground truth (and those are things that we can possibly infer from data), please see triangle in the figure:
+  <li>identify the joint between  <br />
     <ul>
-      <li>laplacian vector</li>
-      <li>weights for weighted laplacian ($w_p$ and $w_n$)</li>
+      <li>line v.s. arc</li>
+      <li>arc v.s. arc</li>
+      <li>arc v.s. clothoid ..etc..</li>
     </ul>
   </li>
 </ul>
 
-<p>And we have two strategies to tackle this problem:</p>
-
-<ol>
-  <li>learn all those values (3 values in 2D, including 2-dim laplacian vector, and one scalar weight ($w_p+w_n=1.0$) ).</li>
-  <li>only learn laplacian vector, and use alternative optimization to optimize $w_p$ and $w_n$.	</li>
-</ol>
+<h2 id="todos">Todos</h2>
+<ul>
+  <li>start to fitting the basic primitive:
+    <ul>
+      <li>line</li>
+      <li>arc</li>
+      <li>clothoid - find the fitting method..</li>
+    </ul>
+  </li>
+  <li>write down the algorithm and optimization part and discuss and refine with all..</li>
+  <li>read the reference including:
+    <ul>
+      <li>GlobFit</li>
+      <li>Conjoining Gestalt Rules for Abstraction of Architectural Drawings</li>
+    </ul>
+  </li>
+</ul>
 
 </article>
 
@@ -97,15 +123,6 @@
 <aside class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/meeting/2016/02/03/meeting-note/">
-            Feb 03, 2015 Meeting note
-            <small><time datetime="2016-02-03T00:00:00-08:00">03 Feb 2016</time></small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -121,6 +138,15 @@
           <a href="/meeting/2016/01/27/Meeting-Note/">
             Jan 27, 2015 Meeting note
             <small><time datetime="2016-01-27T00:00:00-08:00">27 Jan 2016</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/progress/2016/01/10/formulation-comparison/">
+            Formulation comparison for cases
+            <small><time datetime="2016-01-10T00:00:00-08:00">10 Jan 2016</time></small>
           </a>
         </h3>
       </li>

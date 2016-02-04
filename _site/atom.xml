@@ -4,13 +4,70 @@
  <title>Smooth Voxel Modeling</title>
  <link href="http://jdily.github.io/atom.xml" rel="self"/>
  <link href="http://jdily.github.io/"/>
- <updated>2016-02-01T15:28:17-08:00</updated>
+ <updated>2016-02-03T16:08:36-08:00</updated>
  <id>http://jdily.github.io</id>
  <author>
    <name>I-Chao Shen</name>
    <email>jdilyshen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Feb 03, 2015 Meeting note</title>
+   <link href="http://jdily.github.io/meeting/2016/02/03/meeting-note/"/>
+   <updated>2016-02-03T00:00:00-08:00</updated>
+   <id>http://jdily.github.io/meeting/2016/02/03/meeting-note</id>
+   <content type="html">&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;A top-down approach to fit primitives, (ref : GlobFit @ SIGGRAPH 2011) :
+    &lt;ul&gt;
+      &lt;li&gt;GlobFit got global info, and Cornucopia use local info, and we want to combine both…&lt;/li&gt;
+      &lt;li&gt;we want to fit a family of primitives within our &lt;strong&gt;interval&lt;/strong&gt;..
+        &lt;ul&gt;
+          &lt;li&gt;line, arc, clothoid, hermit…&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;simultaneously, we expect that the number of primitives as small as possible..&lt;/li&gt;
+      &lt;li&gt;The process should be like the following: (I will write down a pseudocode like thing in another document that we can discuss algorithm):
+        &lt;ol&gt;
+          &lt;li&gt;fit initial primitive to entire samples, it one fit, e.g. one circle fit, then done.&lt;/li&gt;
+          &lt;li&gt;detect sharp corners, and get segments…&lt;/li&gt;
+          &lt;li&gt;fit regular primitives to a segment (span)&lt;/li&gt;
+          &lt;li&gt;see whether the same fit (parameter of the primitive) can be fit else where.. (global relationship, e.g. parallel or orthogonal for line…)&lt;/li&gt;
+          &lt;li&gt;if unmatch for all primitive -&amp;gt; consider further segment -&amp;gt; fit primitive or smooth curves…&lt;/li&gt;
+          &lt;li&gt;consolidate and see whether we can reduce the primitive set smaller..&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;identify the joint between  &lt;br /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;line v.s. arc&lt;/li&gt;
+      &lt;li&gt;arc v.s. arc&lt;/li&gt;
+      &lt;li&gt;arc v.s. clothoid ..etc..&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;todos&quot;&gt;Todos&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;start to fitting the basic primitive:
+    &lt;ul&gt;
+      &lt;li&gt;line&lt;/li&gt;
+      &lt;li&gt;arc&lt;/li&gt;
+      &lt;li&gt;clothoid - find the fitting method..&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;write down the algorithm and optimization part and discuss and refine with all..&lt;/li&gt;
+  &lt;li&gt;read the reference including:
+    &lt;ul&gt;
+      &lt;li&gt;GlobFit&lt;/li&gt;
+      &lt;li&gt;Conjoining Gestalt Rules for Abstraction of Architectural Drawings&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Cornucopia method</title>
